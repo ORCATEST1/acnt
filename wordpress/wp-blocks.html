@@ -3,12 +3,18 @@
   ==========================================
   Each block = one Custom HTML block in WordPress.
 
+  FUNCTIONALITY NOTES:
+  ✅ Blocks 0,1,2,3,4,7,8,9 — fully functional as-is
+  ⚠️  Block 5 (Contact) — install WPForms plugin for real form submission
+  ⚠️  Block 6 (Footer)  — create these WP pages first: /terms /privacy-policy /disclaimer /shipping-policy /refund-policy
+
   PAGE ORDER (Homepage):
   ┌─────────────────────────────────────┐
   │  BLOCK 0: Disclaimer Banner         │  ← top of every page
   │  BLOCK 1: Hero + COA Library        │
   │  BLOCK 2: Trust Bar                 │
-  │  [ WooCommerce Product Grid here ]  │  ← native block, no paste needed
+  │  BLOCK 9: Stats Bar                 │
+  │  BLOCK 8: Featured Products Grid    │  ← styled product cards with photos
   │  BLOCK 3: Quality / Standards       │
   │  BLOCK 4: FAQ                       │
   │  BLOCK 5: Contact                   │
@@ -366,6 +372,243 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
         </div>
     </div>
 </footer>
+
+
+
+
+<!-- ============================================================
+     BLOCK 8: FEATURED PRODUCTS GRID (with photos)
+     Paste on: Homepage, below Trust Bar / Stats Bar
+     Full styled product cards pulling real images from ascntlabs.com
+     ============================================================ -->
+
+<section style="padding:4rem 2rem;background:#fff;border-top:1px solid #E5E7EB;font-family:'Inter',sans-serif;box-sizing:border-box;width:100%;">
+    <div style="max-width:1280px;margin:0 auto;">
+
+        <!-- Section header -->
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:0.5rem;">
+            <span style="font-size:1.0625rem;font-weight:600;color:#111827;">Featured Products</span>
+            <a href="/shop/" style="font-size:0.8125rem;font-weight:500;color:#2563EB;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">View all →</a>
+        </div>
+
+        <!-- Category: Fat Loss / Metabolic -->
+        <div style="margin-bottom:3rem;">
+            <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+                Fat Loss / Metabolic
+                <span style="flex:1;height:1px;background:#E5E7EB;display:inline-block;"></span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;">
+
+                <!-- Retatrutide 10mg -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/A973D19C-772F-4755-86F5-D60B913EC6E7-300x300.png" alt="Retatrutide 10mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">Retatrutide 10mg</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#15803D;background:#DCFCE7;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">≥98%</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Fat Loss / Metabolic</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$120.00</span>
+                            <a href="/product/retatrutide-10mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Retatrutide 20mg -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/425BF7D2-D442-4A06-AD78-8543AF862CE4-300x300.png" alt="Retatrutide 20mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">Retatrutide 20mg</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#15803D;background:#DCFCE7;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">≥98%</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Fat Loss / Metabolic</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$175.00</span>
+                            <a href="/product/retatrutide-20mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MOTS-c 40mg -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/22370990-6671-4916-9722-01942E691A66-300x300.png" alt="MOTS-c 40mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">MOTS-c 40mg</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#15803D;background:#DCFCE7;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">≥98%</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Fat Loss / Metabolic</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$70.00</span>
+                            <a href="/product/mots-c-40mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NAD+ 1000mg -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/65B87D04-78AD-4845-A51E-76675DA1A362-300x300.png" alt="NAD+ 1000mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">NAD+ 1000mg</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#15803D;background:#DCFCE7;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">≥98%</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Fat Loss / Metabolic</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$80.00</span>
+                            <a href="/product/nad-1000mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Category: Performance / Growth -->
+        <div style="margin-bottom:3rem;">
+            <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+                Performance / Growth
+                <span style="flex:1;height:1px;background:#E5E7EB;display:inline-block;"></span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;">
+
+                <!-- CJC-1295 / Ipamorelin -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/84F59392-8469-4397-BEFB-1A0F83288F43-300x300.png" alt="CJC-1295 / Ipamorelin" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">CJC-1295 / Ipamorelin (5mg/5mg)</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#15803D;background:#DCFCE7;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">≥97%</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Performance / Growth</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$50.00</span>
+                            <a href="/product/cjc-1295-ipamorelin-5mg-5mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IGF-1 LR3 -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/E76014BA-EABA-4B15-AB50-AF3AB4CEDE96-300x300.png" alt="IGF-1 LR3 1mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">IGF-1 LR3 1mg</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#15803D;background:#DCFCE7;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">≥98%</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Performance / Growth</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$70.00</span>
+                            <a href="/product/igf-1-lr3-1mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Category: Recovery / Healing -->
+        <div>
+            <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+                Recovery / Healing
+                <span style="flex:1;height:1px;background:#E5E7EB;display:inline-block;"></span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;">
+
+                <!-- BPC-157 / TB-500 -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/67340AB4-19EC-4C1C-9A5C-38E5CF64516A-300x300.png" alt="BPC-157 / TB-500" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">BPC-157 / TB-500 (10mg/10mg)</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#15803D;background:#DCFCE7;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">≥95%</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Recovery / Healing</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$65.00</span>
+                            <a href="/product/bpc-157-tb-500-10mg-10mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPV 10mg -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/8F6FA60F-045A-4498-A8C3-562706BD74EB-300x300.png" alt="KPV 10mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">KPV 10mg</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#15803D;background:#DCFCE7;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">≥98%</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Recovery / Healing</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$50.00</span>
+                            <a href="/product/kpv-10-mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<!-- ============================================================
+     BLOCK 9: STATS BAR
+     Paste on: Homepage, between Trust Bar and Product Grid
+     ============================================================ -->
+
+<div style="background:#111827;padding:2.5rem 2rem;font-family:'Inter',sans-serif;box-sizing:border-box;width:100%;">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2rem;text-align:center;">
+
+        <div>
+            <div style="font-size:1.75rem;font-weight:600;color:#fff;letter-spacing:-0.03em;margin-bottom:0.25rem;">≥95%</div>
+            <div style="font-size:0.8rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.08em;">Min. HPLC Purity</div>
+        </div>
+
+        <div>
+            <div style="font-size:1.75rem;font-weight:600;color:#fff;letter-spacing:-0.03em;margin-bottom:0.25rem;">8</div>
+            <div style="font-size:0.8rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.08em;">Research Peptides</div>
+        </div>
+
+        <div>
+            <div style="font-size:1.75rem;font-weight:600;color:#fff;letter-spacing:-0.03em;margin-bottom:0.25rem;">100%</div>
+            <div style="font-size:0.8rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.08em;">COA Verified</div>
+        </div>
+
+        <div>
+            <div style="font-size:1.75rem;font-weight:600;color:#fff;letter-spacing:-0.03em;margin-bottom:0.25rem;">24h</div>
+            <div style="font-size:0.8rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.08em;">Support Response</div>
+        </div>
+
+        <div>
+            <div style="font-size:1.75rem;font-weight:600;color:#fff;letter-spacing:-0.03em;margin-bottom:0.25rem;">−20°C</div>
+            <div style="font-size:0.8rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.08em;">Cold Chain Shipped</div>
+        </div>
+
+    </div>
+</div>
 
 
 
