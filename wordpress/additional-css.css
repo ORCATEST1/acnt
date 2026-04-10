@@ -1,0 +1,156 @@
+/*
+ * Ascnt Labs — Additional CSS
+ * Paste into: WordPress Admin → Appearance → Customize → Additional CSS
+ * Last updated: 2026-04-09
+ */
+
+/* ── FONTS ─────────────────────────────────────────────────────────────────
+   Add this @import as the very first line — must be before any other rules */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── GLOBAL ─────────────────────────────────────────────────────────────── */
+body {
+    font-family: 'Inter', sans-serif !important;
+    color: #111827;
+    background: #ffffff;
+}
+
+/* ── PRODUCT COLLECTION GRID ────────────────────────────────────────────── */
+
+/* Grid layout — 4 columns, clean gap */
+.wc-block-product-template {
+    gap: 1.25rem !important;
+}
+
+/* Individual product card */
+.wc-block-product-template .wc-block-product {
+    border: 1px solid #E5E7EB !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.wc-block-product-template .wc-block-product:hover {
+    border-color: #9CA3AF !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+}
+
+/* Product image area */
+.wc-block-product-template .wc-block-components-product-image {
+    background: #ffffff !important;
+    border-bottom: 1px solid #E5E7EB !important;
+    height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1.5rem !important;
+    border-radius: 0 !important;
+}
+
+.wc-block-product-template .wc-block-components-product-image img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+}
+
+/* Product info group (title, category, price) */
+.wc-block-product-template .wp-block-group {
+    padding: 1.25rem !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Product title */
+.wc-block-product-template .wp-block-post-title a,
+.wc-block-product-template .wp-block-post-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.9375rem !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    line-height: 1.3 !important;
+    text-decoration: none !important;
+    margin-bottom: 0.25rem !important;
+}
+
+.wc-block-product-template .wp-block-post-title a:hover {
+    color: #2563EB !important;
+}
+
+/* Category label */
+.wc-block-product-template .wp-block-post-terms,
+.wc-block-product-template .wp-block-post-terms a {
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    color: #9CA3AF !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* Price */
+.wc-block-product-template .wc-block-components-product-price,
+.wc-block-product-template .wc-block-components-product-price .wc-block-formatted-money-amount {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    margin-top: 0.5rem !important;
+}
+
+/* ── ADD TO CART BUTTON ─────────────────────────────────────────────────── */
+.wc-block-product-template .wc-block-components-product-button,
+.wc-block-product-template .wp-block-woocommerce-product-button {
+    margin-top: 1rem !important;
+    padding-top: 1rem !important;
+    border-top: 1px solid #F3F4F6 !important;
+}
+
+.wc-block-product-template .wc-block-components-product-button__button,
+.wc-block-product-template .add_to_cart_button,
+.wc-block-product-template a.button {
+    background: #2563EB !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 6px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.8125rem !important;
+    font-weight: 500 !important;
+    padding: 0.55rem 1rem !important;
+    width: 100% !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
+    text-decoration: none !important;
+    display: block !important;
+}
+
+.wc-block-product-template .wc-block-components-product-button__button:hover,
+.wc-block-product-template .add_to_cart_button:hover,
+.wc-block-product-template a.button:hover {
+    background: #1D4ED8 !important;
+}
+
+/* ── SECTION / PAGE TITLE ───────────────────────────────────────────────── */
+.wp-block-woocommerce-product-collection h2,
+.woocommerce-products-header__title,
+h1.entry-title, h2.entry-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* ── SHOP / ARCHIVE PAGE LAYOUT ─────────────────────────────────────────── */
+.woocommerce-page .site-main,
+.woocommerce .site-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
