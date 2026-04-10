@@ -1,163 +1,117 @@
 <!--
   Ascnt Labs — WordPress Custom HTML Blocks
   ==========================================
-  SECTIONS:
-  1. Hero + COA Library (combined — paste on Homepage)
-  2. Trust Bar (paste below Hero on Homepage)
+  Each block = one Custom HTML block in WordPress.
+
+  PAGE ORDER (Homepage):
+  ┌─────────────────────────────────────┐
+  │  BLOCK 0: Disclaimer Banner         │  ← top of every page
+  │  BLOCK 1: Hero + COA Library        │
+  │  BLOCK 2: Trust Bar                 │
+  │  [ WooCommerce Product Grid here ]  │  ← native block, no paste needed
+  │  BLOCK 3: Quality / Standards       │
+  │  BLOCK 4: FAQ                       │
+  │  BLOCK 5: Contact                   │
+  │  BLOCK 6: Footer                    │
+  └─────────────────────────────────────┘
+
+  SHOP PAGE:
+  ┌─────────────────────────────────────┐
+  │  BLOCK 7: Category Filter Bar       │  ← above product grid
+  │  [ WooCommerce Product Grid here ]  │
+  └─────────────────────────────────────┘
 -->
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+
+
+
+<!-- ============================================================
+     BLOCK 0: DISCLAIMER BANNER
+     Paste on: Every page, very top
+     ============================================================ -->
+
+<div style="
+    background: #111827;
+    color: #9CA3AF;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 0.5rem 2rem;
+    letter-spacing: 0.02em;
+    width: 100%;
+    box-sizing: border-box;
+">
+    All products are for <strong style="color:#E5E7EB;font-weight:600;">in vitro research use only</strong>. Not intended for human or veterinary use. Not for sale to minors.
+</div>
 
 
 
 
 <!-- ============================================================
      BLOCK 1: HERO + COA LIBRARY (combined)
-     Paste on: Homepage, above the Latest Products block
+     Paste on: Homepage, below Disclaimer
      ============================================================ -->
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
     .ascnt-modal-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(17,24,39,0.55);
-        backdrop-filter: blur(4px);
-        z-index: 99999;
-        align-items: center;
-        justify-content: center;
+        display: none; position: fixed; inset: 0;
+        background: rgba(17,24,39,0.55); backdrop-filter: blur(4px);
+        z-index: 99999; align-items: center; justify-content: center;
     }
     .ascnt-modal-overlay.open { display: flex; }
     .ascnt-modal-box {
-        background: #fff;
-        border-radius: 12px;
-        width: 90%;
-        max-width: 600px;
-        max-height: 82vh;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
+        background: #fff; border-radius: 12px;
+        width: 90%; max-width: 600px; max-height: 82vh;
+        overflow: hidden; display: flex; flex-direction: column;
         box-shadow: 0 8px 24px rgba(0,0,0,0.14);
         font-family: 'Inter', sans-serif;
     }
     .ascnt-modal-head {
-        padding: 1.25rem 1.5rem;
-        border-bottom: 1px solid #E5E7EB;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-shrink: 0;
+        padding: 1.25rem 1.5rem; border-bottom: 1px solid #E5E7EB;
+        display: flex; justify-content: space-between;
+        align-items: flex-start; flex-shrink: 0;
     }
     .ascnt-modal-head h3 { font-size: 0.9375rem; font-weight: 600; color: #111827; margin: 0 0 0.75rem 0; }
-    .ascnt-modal-close {
-        background: none; border: none; cursor: pointer;
-        color: #9CA3AF; font-size: 1.5rem; line-height: 1; padding: 0; flex-shrink: 0; margin-left: 1rem;
-    }
+    .ascnt-modal-close { background: none; border: none; cursor: pointer; color: #9CA3AF; font-size: 1.5rem; line-height: 1; padding: 0; flex-shrink: 0; margin-left: 1rem; }
     .ascnt-modal-close:hover { color: #111827; }
     .ascnt-product-select {
-        width: 100%;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: #111827;
-        background: #F9FAFB;
-        border: 1px solid #E5E7EB;
-        border-radius: 6px;
-        padding: 0.5rem 0.75rem;
-        cursor: pointer;
-        appearance: none;
+        width: 100%; font-family: 'Inter', sans-serif; font-size: 0.875rem;
+        font-weight: 500; color: #111827; background: #F9FAFB;
+        border: 1px solid #E5E7EB; border-radius: 6px;
+        padding: 0.5rem 2rem 0.5rem 0.75rem; cursor: pointer; appearance: none;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239CA3AF' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-        background-repeat: no-repeat;
-        background-position: right 0.75rem center;
-        padding-right: 2rem;
+        background-repeat: no-repeat; background-position: right 0.75rem center;
     }
     .ascnt-product-select:focus { outline: none; border-color: #2563EB; }
     .ascnt-modal-lot { font-size: 0.75rem; color: #9CA3AF; margin-top: 0.4rem; }
     .ascnt-modal-body { padding: 1.25rem 1.5rem; overflow-y: auto; }
-    .ascnt-coa-row {
-        display: flex; gap: 1rem;
-        padding: 0.65rem 0;
-        border-bottom: 1px solid #F3F4F6;
-        font-size: 0.8125rem;
-    }
+    .ascnt-coa-row { display: flex; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid #F3F4F6; font-size: 0.8125rem; }
     .ascnt-coa-row:last-child { border-bottom: none; }
     .ascnt-coa-key { font-weight: 500; color: #4B5563; min-width: 155px; flex-shrink: 0; }
     .ascnt-coa-val { font-family: 'IBM Plex Mono', monospace; color: #111827; }
-    .ascnt-coa-storage {
-        margin-top: 1rem;
-        background: #EFF6FF;
-        border: 1px solid #BFDBFE;
-        border-radius: 8px;
-        padding: 0.875rem 1rem;
-        font-size: 0.8rem;
-        color: #4B5563;
-        line-height: 1.6;
-    }
+    .ascnt-coa-storage { margin-top: 1rem; background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 0.875rem 1rem; font-size: 0.8rem; color: #4B5563; line-height: 1.6; }
 </style>
 
-<section style="
-    padding: 5rem 2rem 4rem;
-    background: #F9FAFB;
-    border-bottom: 1px solid #E5E7EB;
-    font-family: 'Inter', sans-serif;
-    box-sizing: border-box;
-    width: 100%;
-">
-    <div style="max-width: 680px; margin: 0 auto; text-align: center;">
-
-        <span style="
-            display: inline-block;
-            font-size: 0.7rem; font-weight: 600;
-            letter-spacing: 0.1em; text-transform: uppercase;
-            color: #2563EB; background: #EFF6FF;
-            border: 1px solid #BFDBFE;
-            padding: 0.3rem 0.85rem; border-radius: 99px;
-            margin-bottom: 1.5rem;
-        ">Research-Grade Reagents</span>
-
-        <h1 style="
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1.75rem, 4vw, 2.75rem);
-            font-weight: 600; letter-spacing: -0.03em;
-            line-height: 1.15; color: #111827;
-            margin: 0 0 1.25rem 0;
-        ">Precision Peptides for Serious Research</h1>
-
-        <p style="
-            font-size: 1rem; color: #4B5563; font-weight: 300;
-            line-height: 1.7; max-width: 500px; margin: 0 auto 2.5rem;
-        ">HPLC-verified, COA-backed peptides manufactured to the standards your work demands.</p>
-
-        <div style="margin-bottom: 1.25rem;">
-            <a href="/shop" style="
-                display: inline-block; background: #2563EB; color: #ffffff;
-                font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 500;
-                padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none;
-            " onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Browse Catalog</a>
-
-            <a href="/about" style="
-                display: inline-block; background: transparent; color: #4B5563;
-                font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 500;
-                padding: 0.75rem 1.75rem; border-radius: 8px; text-decoration: none;
-                border: 1px solid #E5E7EB; margin-left: 0.75rem;
-            " onmouseover="this.style.borderColor='#9CA3AF';this.style.color='#111827'" onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#4B5563'">Our Standards</a>
+<section style="padding:5rem 2rem 4rem;background:#F9FAFB;border-bottom:1px solid #E5E7EB;font-family:'Inter',sans-serif;box-sizing:border-box;width:100%;">
+    <div style="max-width:680px;margin:0 auto;text-align:center;">
+        <span style="display:inline-block;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#2563EB;background:#EFF6FF;border:1px solid #BFDBFE;padding:0.3rem 0.85rem;border-radius:99px;margin-bottom:1.5rem;">Research-Grade Reagents</span>
+        <h1 style="font-family:'Inter',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);font-weight:600;letter-spacing:-0.03em;line-height:1.15;color:#111827;margin:0 0 1.25rem 0;">Precision Peptides for Serious Research</h1>
+        <p style="font-size:1rem;color:#4B5563;font-weight:300;line-height:1.7;max-width:500px;margin:0 auto 2.5rem;">HPLC-verified, COA-backed peptides manufactured to the standards your work demands.</p>
+        <div style="margin-bottom:1.25rem;">
+            <a href="/shop" style="display:inline-block;background:#2563EB;color:#fff;font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Browse Catalog</a>
+            <a href="/quality" style="display:inline-block;background:transparent;color:#4B5563;font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;border:1px solid #E5E7EB;margin-left:0.75rem;" onmouseover="this.style.borderColor='#9CA3AF';this.style.color='#111827'" onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#4B5563'">Our Standards</a>
         </div>
-
         <div>
-            <button onclick="ascntOpenCOA()" style="
-                display: inline-flex; align-items: center; gap: 0.4rem;
-                background: #ffffff; color: #4B5563;
-                font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 500;
-                padding: 0.55rem 1.1rem; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;
-            " onmouseover="this.style.borderColor='#9CA3AF'" onmouseout="this.style.borderColor='#E5E7EB'">
+            <button onclick="ascntOpenCOA()" style="display:inline-flex;align-items:center;gap:0.4rem;background:#fff;color:#4B5563;font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:500;padding:0.55rem 1.1rem;border-radius:6px;border:1px solid #E5E7EB;cursor:pointer;" onmouseover="this.style.borderColor='#9CA3AF'" onmouseout="this.style.borderColor='#E5E7EB'">
                 View Certificate of Analysis Library
             </button>
         </div>
-
     </div>
 </section>
 
-<!-- COA Modal -->
 <div class="ascnt-modal-overlay" id="ascnt-coa-modal" onclick="if(event.target===this){ascntCloseCOA()}">
     <div class="ascnt-modal-box">
         <div class="ascnt-modal-head">
@@ -183,117 +137,18 @@
 
 <script>
 var ASCNT_COA = {
-    retatrutide10: {
-        lot: 'Lot #RET-2025-A7B3',
-        rows: [
-            ['HPLC Purity',      '98.7% (C18, gradient 10–60% ACN / 30 min)'],
-            ['Molecular Weight', '4,758.42 Da (calc.) / 4,758.39 Da (obs. ESI-MS)'],
-            ['Water Content',    '4.2% (Karl Fischer titration)'],
-            ['Peptide Content',  '94.1% (amino acid analysis)'],
-            ['Appearance',       'White to off-white lyophilized powder']
-        ],
-        storage: 'Store at −20 °C, desiccated. Stable ≥24 months. Reconstitute in BAC water; once reconstituted store at 2–8 °C, use within 28 days.'
-    },
-    retatrutide20: {
-        lot: 'Lot #RET-2025-B2C4',
-        rows: [
-            ['HPLC Purity',      '98.5% (C18, gradient 10–60% ACN / 30 min)'],
-            ['Molecular Weight', '4,758.42 Da (calc.) / 4,758.40 Da (obs. ESI-MS)'],
-            ['Water Content',    '4.4% (Karl Fischer titration)'],
-            ['Peptide Content',  '93.8% (amino acid analysis)'],
-            ['Appearance',       'White to off-white lyophilized powder']
-        ],
-        storage: 'Store at −20 °C, desiccated. Stable ≥24 months. Reconstitute in BAC water; once reconstituted store at 2–8 °C, use within 28 days.'
-    },
-    motsc: {
-        lot: 'Lot #MOT-2025-J2K6',
-        rows: [
-            ['HPLC Purity',      '98.4% (C18, gradient 15–65% ACN / 35 min)'],
-            ['Molecular Weight', '1,785.97 Da (calc.) / 1,785.94 Da (obs. ESI-MS)'],
-            ['Water Content',    '5.3% (Karl Fischer titration)'],
-            ['Peptide Content',  '93.1% (amino acid analysis)'],
-            ['Appearance',       'White lyophilized powder']
-        ],
-        storage: 'Store at −20 °C, desiccated. Stable ≥24 months.'
-    },
-    nad: {
-        lot: 'Lot #NAD-2025-F3N8',
-        rows: [
-            ['HPLC Purity',       '98.1% (C18, gradient 10–30% ACN / 20 min)'],
-            ['Molecular Weight',  '663.43 Da (calc.) / 663.41 Da (obs. ESI-MS)'],
-            ['Enzymatic Activity','≥95% retention vs reference standard'],
-            ['Water Content',     '4.7% (Karl Fischer titration)'],
-            ['Appearance',        'White to slightly yellow powder']
-        ],
-        storage: 'Store at −20 °C, desiccated, protected from light and humidity.'
-    },
-    cjc: {
-        lot: 'Lot #CJC-2025-D8K1',
-        rows: [
-            ['HPLC Purity',      '97.4% combined (C18, gradient 20–50% ACN / 35 min)'],
-            ['CJC-1295 MW',      '3,647.28 Da (calc.) / 3,647.31 Da (obs.)'],
-            ['Ipamorelin MW',    '2,332.84 Da (calc.) / 2,332.87 Da (obs.)'],
-            ['Water Content',    '5.1% (Karl Fischer titration)'],
-            ['Peptide Content',  '92.8% (amino acid analysis)']
-        ],
-        storage: 'Store at −20 °C, desiccated. Stable ≥24 months from manufacture.'
-    },
-    igf1: {
-        lot: 'Lot #IGF-2025-K3R7',
-        rows: [
-            ['HPLC Purity',      '98.2% (C18, gradient 20–60% ACN / 30 min)'],
-            ['Molecular Weight', '9,117.48 Da (calc.) / 9,117.44 Da (obs. MALDI-TOF)'],
-            ['Water Content',    '4.9% (Karl Fischer titration)'],
-            ['Peptide Content',  '93.5% (amino acid analysis)'],
-            ['Appearance',       'White lyophilized powder']
-        ],
-        storage: 'Store at −20 °C, desiccated. Stable ≥24 months. Once reconstituted store at 2–8 °C; use within 14 days. Avoid repeated freeze-thaw cycles.'
-    },
-    bpc157: {
-        lot: 'Lot #BPC-2025-E5M7',
-        rows: [
-            ['HPLC Purity',      '95.8% combined (C18, gradient 15–55% ACN / 40 min)'],
-            ['BPC-157 MW',       '1,419.53 Da (calc.) / 1,419.51 Da (obs.)'],
-            ['TB-500 MW',        '4,963.44 Da (calc.) / 4,963.47 Da (obs.)'],
-            ['Water Content',    '6.3% (Karl Fischer titration)'],
-            ['Peptide Content',  '89.2% (amino acid analysis)']
-        ],
-        storage: 'Store at −20 °C, desiccated. Stable ≥24 months.'
-    },
-    kpv: {
-        lot: 'Lot #KPV-2025-N1Q4',
-        rows: [
-            ['HPLC Purity',      '98.6% (C18, gradient 5–35% ACN / 20 min)'],
-            ['Molecular Weight', '354.43 Da (calc.) / 354.41 Da (obs. ESI-MS)'],
-            ['Water Content',    '5.1% (Karl Fischer titration)'],
-            ['Peptide Content',  '93.9% (amino acid analysis)'],
-            ['Appearance',       'White to off-white lyophilized powder']
-        ],
-        storage: 'Store at −20 °C, desiccated, protected from light. Stable ≥24 months. After reconstitution store at 2–8 °C; use within 28 days.'
-    }
+    retatrutide10: { lot:'Lot #RET-2025-A7B3', rows:[['HPLC Purity','98.7% (C18, gradient 10–60% ACN / 30 min)'],['Molecular Weight','4,758.42 Da (calc.) / 4,758.39 Da (obs. ESI-MS)'],['Water Content','4.2% (Karl Fischer titration)'],['Peptide Content','94.1% (amino acid analysis)'],['Appearance','White to off-white lyophilized powder']], storage:'Store at −20 °C, desiccated. Stable ≥24 months. Reconstitute in BAC water; once reconstituted store at 2–8 °C, use within 28 days.' },
+    retatrutide20: { lot:'Lot #RET-2025-B2C4', rows:[['HPLC Purity','98.5% (C18, gradient 10–60% ACN / 30 min)'],['Molecular Weight','4,758.42 Da (calc.) / 4,758.40 Da (obs. ESI-MS)'],['Water Content','4.4% (Karl Fischer titration)'],['Peptide Content','93.8% (amino acid analysis)'],['Appearance','White to off-white lyophilized powder']], storage:'Store at −20 °C, desiccated. Stable ≥24 months. Reconstitute in BAC water; once reconstituted store at 2–8 °C, use within 28 days.' },
+    motsc:         { lot:'Lot #MOT-2025-J2K6', rows:[['HPLC Purity','98.4% (C18, gradient 15–65% ACN / 35 min)'],['Molecular Weight','1,785.97 Da (calc.) / 1,785.94 Da (obs. ESI-MS)'],['Water Content','5.3% (Karl Fischer titration)'],['Peptide Content','93.1% (amino acid analysis)'],['Appearance','White lyophilized powder']], storage:'Store at −20 °C, desiccated. Stable ≥24 months.' },
+    nad:           { lot:'Lot #NAD-2025-F3N8', rows:[['HPLC Purity','98.1% (C18, gradient 10–30% ACN / 20 min)'],['Molecular Weight','663.43 Da (calc.) / 663.41 Da (obs. ESI-MS)'],['Enzymatic Activity','≥95% retention vs reference standard'],['Water Content','4.7% (Karl Fischer titration)'],['Appearance','White to slightly yellow powder']], storage:'Store at −20 °C, desiccated, protected from light and humidity.' },
+    cjc:           { lot:'Lot #CJC-2025-D8K1', rows:[['HPLC Purity','97.4% combined (C18, gradient 20–50% ACN / 35 min)'],['CJC-1295 MW','3,647.28 Da (calc.) / 3,647.31 Da (obs.)'],['Ipamorelin MW','2,332.84 Da (calc.) / 2,332.87 Da (obs.)'],['Water Content','5.1% (Karl Fischer titration)'],['Peptide Content','92.8% (amino acid analysis)']], storage:'Store at −20 °C, desiccated. Stable ≥24 months.' },
+    igf1:          { lot:'Lot #IGF-2025-K3R7', rows:[['HPLC Purity','98.2% (C18, gradient 20–60% ACN / 30 min)'],['Molecular Weight','9,117.48 Da (calc.) / 9,117.44 Da (obs. MALDI-TOF)'],['Water Content','4.9% (Karl Fischer titration)'],['Peptide Content','93.5% (amino acid analysis)'],['Appearance','White lyophilized powder']], storage:'Store at −20 °C, desiccated. Stable ≥24 months. Once reconstituted store at 2–8 °C; use within 14 days. Avoid repeated freeze-thaw cycles.' },
+    bpc157:        { lot:'Lot #BPC-2025-E5M7', rows:[['HPLC Purity','95.8% combined (C18, gradient 15–55% ACN / 40 min)'],['BPC-157 MW','1,419.53 Da (calc.) / 1,419.51 Da (obs.)'],['TB-500 MW','4,963.44 Da (calc.) / 4,963.47 Da (obs.)'],['Water Content','6.3% (Karl Fischer titration)'],['Peptide Content','89.2% (amino acid analysis)']], storage:'Store at −20 °C, desiccated. Stable ≥24 months.' },
+    kpv:           { lot:'Lot #KPV-2025-N1Q4', rows:[['HPLC Purity','98.6% (C18, gradient 5–35% ACN / 20 min)'],['Molecular Weight','354.43 Da (calc.) / 354.41 Da (obs. ESI-MS)'],['Water Content','5.1% (Karl Fischer titration)'],['Peptide Content','93.9% (amino acid analysis)'],['Appearance','White to off-white lyophilized powder']], storage:'Store at −20 °C, desiccated, protected from light. Stable ≥24 months. After reconstitution store at 2–8 °C; use within 28 days.' }
 };
-
-function ascntOpenCOA() {
-    document.getElementById('ascnt-coa-modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    ascntRenderCOA(document.getElementById('ascnt-product-select').value);
-}
-
-function ascntCloseCOA() {
-    document.getElementById('ascnt-coa-modal').classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-function ascntRenderCOA(key) {
-    var d = ASCNT_COA[key];
-    if (!d) return;
-    document.getElementById('ascnt-coa-lot').textContent = d.lot;
-    document.getElementById('ascnt-coa-body').innerHTML =
-        d.rows.map(function(r) {
-            return '<div class="ascnt-coa-row"><span class="ascnt-coa-key">' + r[0] + '</span><span class="ascnt-coa-val">' + r[1] + '</span></div>';
-        }).join('') +
-        '<div class="ascnt-coa-storage"><strong>Storage &amp; Stability</strong><br>' + d.storage + '</div>';
-}
+function ascntOpenCOA() { document.getElementById('ascnt-coa-modal').classList.add('open'); document.body.style.overflow='hidden'; ascntRenderCOA(document.getElementById('ascnt-product-select').value); }
+function ascntCloseCOA() { document.getElementById('ascnt-coa-modal').classList.remove('open'); document.body.style.overflow=''; }
+function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.getElementById('ascnt-coa-lot').textContent=d.lot; document.getElementById('ascnt-coa-body').innerHTML=d.rows.map(function(r){return '<div class="ascnt-coa-row"><span class="ascnt-coa-key">'+r[0]+'</span><span class="ascnt-coa-val">'+r[1]+'</span></div>';}).join('')+'<div class="ascnt-coa-storage"><strong>Storage &amp; Stability</strong><br>'+d.storage+'</div>'; }
 </script>
 
 
@@ -301,36 +156,231 @@ function ascntRenderCOA(key) {
 
 <!-- ============================================================
      BLOCK 2: TRUST BAR
-     Paste on: Homepage, directly below Block 1
+     Paste on: Homepage, directly below Hero
      ============================================================ -->
 
-<div style="
-    background: #ffffff;
-    border-bottom: 1px solid #E5E7EB;
-    padding: 0.875rem 2rem;
-    font-family: 'Inter', sans-serif;
-    box-sizing: border-box;
-    width: 100%;
-">
-    <div style="
-        max-width: 1280px; margin: 0 auto;
-        display: flex; justify-content: center;
-        gap: 2rem; flex-wrap: wrap; align-items: center;
-    ">
-        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;">
-            <span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>HPLC Purity ≥95%
-        </span>
-        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;">
-            <span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>Mass Spec Verified
-        </span>
-        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;">
-            <span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>COA Included
-        </span>
-        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;">
-            <span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>Cold Chain Shipping
-        </span>
-        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;">
-            <span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>For Research Use Only
-        </span>
+<div style="background:#fff;border-bottom:1px solid #E5E7EB;padding:0.875rem 2rem;font-family:'Inter',sans-serif;box-sizing:border-box;width:100%;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;align-items:center;">
+        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;"><span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>HPLC Purity ≥95%</span>
+        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;"><span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>Mass Spec Verified</span>
+        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;"><span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>COA Included</span>
+        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;"><span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>Cold Chain Shipping</span>
+        <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:500;color:#4B5563;"><span style="width:6px;height:6px;border-radius:50%;background:#2563EB;flex-shrink:0;display:inline-block;"></span>For Research Use Only</span>
+    </div>
+</div>
+
+
+
+
+<!-- ============================================================
+     BLOCK 3: QUALITY / STANDARDS
+     Paste on: Homepage below product grid, or standalone /quality page
+     ============================================================ -->
+
+<section style="padding:5rem 2rem;background:#F9FAFB;border-top:1px solid #E5E7EB;font-family:'Inter',sans-serif;box-sizing:border-box;width:100%;">
+    <div style="max-width:1100px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:3rem;">
+            <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;">Our Process</span>
+            <h2 style="font-family:'Inter',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:600;color:#111827;margin:0.5rem 0 0;letter-spacing:-0.02em;">Research-Grade Quality Standards</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;">
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1.75rem;">
+                <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2563EB;margin-bottom:0.75rem;">01 — Synthesis</div>
+                <div style="font-size:0.9375rem;font-weight:600;color:#111827;margin-bottom:0.5rem;">Solid-Phase Peptide Synthesis</div>
+                <p style="font-size:0.8125rem;color:#4B5563;line-height:1.6;margin:0;">Fmoc SPPS on automated synthesizers. Each batch uses pharmaceutical-grade amino acids and resins.</p>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1.75rem;">
+                <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2563EB;margin-bottom:0.75rem;">02 — Purification</div>
+                <div style="font-size:0.9375rem;font-weight:600;color:#111827;margin-bottom:0.5rem;">Reverse-Phase HPLC</div>
+                <p style="font-size:0.8125rem;color:#4B5563;line-height:1.6;margin:0;">C18 preparative HPLC purification to ≥95% purity. Gradient optimized per peptide sequence.</p>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1.75rem;">
+                <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2563EB;margin-bottom:0.75rem;">03 — Verification</div>
+                <div style="font-size:0.9375rem;font-weight:600;color:#111827;margin-bottom:0.5rem;">Mass Spectrometry</div>
+                <p style="font-size:0.8125rem;color:#4B5563;line-height:1.6;margin:0;">ESI-MS or MALDI-TOF confirms molecular identity. Observed mass matched to theoretical within ±0.1 Da.</p>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1.75rem;">
+                <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2563EB;margin-bottom:0.75rem;">04 — Documentation</div>
+                <div style="font-size:0.9375rem;font-weight:600;color:#111827;margin-bottom:0.5rem;">Certificate of Analysis</div>
+                <p style="font-size:0.8125rem;color:#4B5563;line-height:1.6;margin:0;">Full COA issued per batch. Includes HPLC chromatogram, MS data, water content, and storage conditions.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ============================================================
+     BLOCK 4: FAQ
+     Paste on: Homepage or standalone /faq page
+     ============================================================ -->
+
+<section style="padding:5rem 2rem;background:#fff;border-top:1px solid #E5E7EB;font-family:'Inter',sans-serif;box-sizing:border-box;width:100%;">
+    <div style="max-width:720px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:3rem;">
+            <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;">FAQ</span>
+            <h2 style="font-family:'Inter',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:600;color:#111827;margin:0.5rem 0 0;letter-spacing:-0.02em;">Common Questions</h2>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:0;">
+
+            <details style="border-top:1px solid #E5E7EB;padding:1.25rem 0;">
+                <summary style="font-size:0.9375rem;font-weight:500;color:#111827;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                    What does "research use only" mean?
+                    <span style="color:#9CA3AF;font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span>
+                </summary>
+                <p style="font-size:0.875rem;color:#4B5563;line-height:1.7;margin:0.875rem 0 0;">Our peptides are sold exclusively for in vitro laboratory research. They are not approved for human or veterinary administration, and are not intended for diagnostic use. Purchasers are responsible for compliance with all applicable laws.</p>
+            </details>
+
+            <details style="border-top:1px solid #E5E7EB;padding:1.25rem 0;">
+                <summary style="font-size:0.9375rem;font-weight:500;color:#111827;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                    How are purity levels measured?
+                    <span style="color:#9CA3AF;font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span>
+                </summary>
+                <p style="font-size:0.875rem;color:#4B5563;line-height:1.7;margin:0.875rem 0 0;">Purity is determined by reverse-phase HPLC using a C18 column with UV detection at 214 nm. Results are expressed as area percentage. Molecular identity is independently confirmed by mass spectrometry (ESI-MS or MALDI-TOF).</p>
+            </details>
+
+            <details style="border-top:1px solid #E5E7EB;padding:1.25rem 0;">
+                <summary style="font-size:0.9375rem;font-weight:500;color:#111827;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                    How should peptides be stored?
+                    <span style="color:#9CA3AF;font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span>
+                </summary>
+                <p style="font-size:0.875rem;color:#4B5563;line-height:1.7;margin:0.875rem 0 0;">Lyophilized peptides should be stored at −20 °C in a dry, dark environment. Once reconstituted in BAC water, store at 2–8 °C and use within 28 days. Avoid repeated freeze-thaw cycles. See each product's COA for specific conditions.</p>
+            </details>
+
+            <details style="border-top:1px solid #E5E7EB;padding:1.25rem 0;">
+                <summary style="font-size:0.9375rem;font-weight:500;color:#111827;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                    Do you ship internationally?
+                    <span style="color:#9CA3AF;font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span>
+                </summary>
+                <p style="font-size:0.875rem;color:#4B5563;line-height:1.7;margin:0.875rem 0 0;">We currently ship within the United States via cold chain express shipping. International shipping availability varies by destination. Contact us at orders@ascntlabs.com to confirm your location before ordering.</p>
+            </details>
+
+            <details style="border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;padding:1.25rem 0;">
+                <summary style="font-size:0.9375rem;font-weight:500;color:#111827;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+                    Can I request a custom batch or concentration?
+                    <span style="color:#9CA3AF;font-size:1.25rem;flex-shrink:0;margin-left:1rem;">+</span>
+                </summary>
+                <p style="font-size:0.875rem;color:#4B5563;line-height:1.7;margin:0.875rem 0 0;">Yes. We accommodate custom quantities and concentrations for institutional and bulk research orders. Reach out to research@ascntlabs.com with your specifications and we'll provide a quote within 48 hours.</p>
+            </details>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ============================================================
+     BLOCK 5: CONTACT
+     Paste on: Homepage bottom, or standalone /contact page
+     ============================================================ -->
+
+<section style="padding:5rem 2rem;background:#F9FAFB;border-top:1px solid #E5E7EB;font-family:'Inter',sans-serif;box-sizing:border-box;width:100%;">
+    <div style="max-width:960px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:3rem;">
+            <span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;">Get in Touch</span>
+            <h2 style="font-family:'Inter',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:600;color:#111827;margin:0.5rem 0 0;letter-spacing:-0.02em;">Contact Our Research Team</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1.75rem;">
+                <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2563EB;margin-bottom:0.75rem;">Orders</div>
+                <div style="font-size:0.9375rem;font-weight:600;color:#111827;margin-bottom:0.25rem;">orders@ascntlabs.com</div>
+                <p style="font-size:0.8125rem;color:#4B5563;margin:0;">Order status, shipping, returns</p>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1.75rem;">
+                <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2563EB;margin-bottom:0.75rem;">Research Inquiries</div>
+                <div style="font-size:0.9375rem;font-weight:600;color:#111827;margin-bottom:0.25rem;">research@ascntlabs.com</div>
+                <p style="font-size:0.8125rem;color:#4B5563;margin:0;">Custom batches, bulk pricing, technical questions</p>
+            </div>
+
+            <div style="background:#fff;border:1px solid #E5E7EB;border-radius:10px;padding:1.75rem;">
+                <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#2563EB;margin-bottom:0.75rem;">Response Time</div>
+                <div style="font-size:0.9375rem;font-weight:600;color:#111827;margin-bottom:0.25rem;">Within 24 hours</div>
+                <p style="font-size:0.8125rem;color:#4B5563;margin:0;">Mon – Fri, 9 AM – 6 PM EST</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- ============================================================
+     BLOCK 6: FOOTER
+     Paste on: Every page, very bottom
+     ============================================================ -->
+
+<footer style="background:#111827;color:#9CA3AF;font-family:'Inter',sans-serif;padding:3rem 2rem 1.5rem;box-sizing:border-box;width:100%;">
+    <div style="max-width:1280px;margin:0 auto;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;margin-bottom:2.5rem;">
+
+            <div>
+                <div style="font-size:1rem;font-weight:600;color:#fff;letter-spacing:-0.02em;margin-bottom:0.75rem;">Ascnt<span style="color:#60A5FA;">Labs</span></div>
+                <p style="font-size:0.8125rem;line-height:1.6;margin:0;max-width:220px;">Research-grade peptide reagents. For in vitro research use only.</p>
+            </div>
+
+            <div>
+                <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#E5E7EB;margin-bottom:0.875rem;">Catalog</div>
+                <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                    <a href="/product-category/fat-loss-metabolic/" style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Fat Loss / Metabolic</a>
+                    <a href="/product-category/performance-growth/" style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Performance / Growth</a>
+                    <a href="/product-category/recovery-healing/"   style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Recovery / Healing</a>
+                    <a href="/shop/"                                 style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">View All Products</a>
+                </div>
+            </div>
+
+            <div>
+                <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#E5E7EB;margin-bottom:0.875rem;">Support</div>
+                <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                    <a href="/faq/"             style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">FAQ</a>
+                    <a href="/shipping-policy/" style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Shipping Policy</a>
+                    <a href="/refund-policy/"   style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Refund Policy</a>
+                    <a href="/contact/"         style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Contact</a>
+                </div>
+            </div>
+
+            <div>
+                <div style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#E5E7EB;margin-bottom:0.875rem;">Legal</div>
+                <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                    <a href="/terms/"           style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Terms of Service</a>
+                    <a href="/privacy-policy/"  style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Privacy Policy</a>
+                    <a href="/disclaimer/"      style="font-size:0.8125rem;color:#9CA3AF;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9CA3AF'">Research Disclaimer</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+            <span style="font-size:0.75rem;">&copy; 2026 Ascnt Labs. All rights reserved.</span>
+            <span style="font-size:0.75rem;">All products for <strong style="color:#E5E7EB;">in vitro research use only</strong>. Not for human or veterinary use.</span>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<!-- ============================================================
+     BLOCK 7: CATEGORY FILTER BAR
+     Paste on: Shop page, above the WooCommerce product grid
+     ============================================================ -->
+
+<div style="background:#fff;border-bottom:1px solid #E5E7EB;padding:1rem 2rem;font-family:'Inter',sans-serif;box-sizing:border-box;width:100%;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
+        <span style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#9CA3AF;margin-right:0.5rem;">Filter:</span>
+        <a href="/shop/" style="display:inline-block;font-size:0.8125rem;font-weight:500;color:#111827;background:#F3F4F6;border:1px solid #E5E7EB;padding:0.4rem 1rem;border-radius:99px;text-decoration:none;" onmouseover="this.style.background='#E5E7EB'" onmouseout="this.style.background='#F3F4F6'">All</a>
+        <a href="/product-category/fat-loss-metabolic/" style="display:inline-block;font-size:0.8125rem;font-weight:500;color:#4B5563;background:#fff;border:1px solid #E5E7EB;padding:0.4rem 1rem;border-radius:99px;text-decoration:none;" onmouseover="this.style.borderColor='#9CA3AF';this.style.color='#111827'" onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#4B5563'">Fat Loss / Metabolic</a>
+        <a href="/product-category/performance-growth/" style="display:inline-block;font-size:0.8125rem;font-weight:500;color:#4B5563;background:#fff;border:1px solid #E5E7EB;padding:0.4rem 1rem;border-radius:99px;text-decoration:none;" onmouseover="this.style.borderColor='#9CA3AF';this.style.color='#111827'" onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#4B5563'">Performance / Growth</a>
+        <a href="/product-category/recovery-healing/"   style="display:inline-block;font-size:0.8125rem;font-weight:500;color:#4B5563;background:#fff;border:1px solid #E5E7EB;padding:0.4rem 1rem;border-radius:99px;text-decoration:none;" onmouseover="this.style.borderColor='#9CA3AF';this.style.color='#111827'" onmouseout="this.style.borderColor='#E5E7EB';this.style.color='#4B5563'">Recovery / Healing</a>
     </div>
 </div>
