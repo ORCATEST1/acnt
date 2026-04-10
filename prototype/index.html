@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascnt Labs — Research-Grade Peptides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white:       #FFFFFF;
+            --gray-50:     #F9FAFB;
+            --gray-100:    #F3F4F6;
+            --gray-200:    #E5E7EB;
+            --gray-400:    #9CA3AF;
+            --gray-600:    #4B5563;
+            --gray-900:    #111827;
+            --blue-50:     #EFF6FF;
+            --blue-200:    #BFDBFE;
+            --blue-600:    #2563EB;
+            --blue-700:    #1D4ED8;
+            --green-100:   #DCFCE7;
+            --green-700:   #15803D;
+            --shadow-sm:   0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md:   0 4px 12px rgba(0,0,0,0.08);
+            --shadow-lg:   0 8px 24px rgba(0,0,0,0.10);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ── NAV ── */
+        .nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            z-index: 1000;
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.125rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--gray-900);
+            text-decoration: none;
+        }
+        .logo span { color: var(--blue-600); }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gray-900); }
+        .nav-cart {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.4rem 0.75rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .nav-cart:hover { border-color: var(--blue-600); color: var(--blue-600); }
+
+        /* ── HERO ── */
+        .hero {
+            margin-top: 64px;
+            padding: 7rem 2rem 5rem;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .hero-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .hero-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--blue-600);
+            background: var(--blue-50);
+            border: 1px solid var(--blue-200);
+            padding: 0.3rem 0.75rem;
+            border-radius: 99px;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--gray-900);
+            margin-bottom: 1.25rem;
+        }
+        .hero p {
+            font-size: 1.0625rem;
+            color: var(--gray-600);
+            max-width: 520px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--blue-600);
+            color: #fff;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-primary:hover { background: var(--blue-700); transform: translateY(-1px); }
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--gray-600);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 1px solid var(--gray-200);
+            cursor: pointer;
+            margin-left: 0.75rem;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-outline:hover { border-color: var(--gray-400); color: var(--gray-900); }
+
+        /* ── TRUST BAR ── */
+        .trust-bar {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0.875rem 2rem;
+        }
+        .trust-bar-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--gray-600);
+        }
+        .trust-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--blue-600);
+            flex-shrink: 0;
+        }
+
+        /* ── PRODUCTS ── */
+        .products {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+        .products-inner { max-width: 1280px; margin: 0 auto; }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        .section-meta {
+            font-size: 0.8125rem;
+            color: var(--gray-400);
+        }
+
+        .category-block { margin-bottom: 4rem; }
+        .category-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .category-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gray-200);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .product-card {
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            padding: 0;
+            background: var(--white);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            border-color: var(--gray-400);
+            box-shadow: var(--shadow-md);
+        }
+        .product-img-wrap {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+        .product-img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .product-card-body {
+            padding: 1.25rem 1.25rem 1rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        .product-name {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            line-height: 1.3;
+        }
+        .purity-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            color: var(--green-700);
+            background: var(--green-100);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-left: 0.5rem;
+        }
+        .product-desc {
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
+            flex: 1;
+        }
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-100);
+        }
+        .product-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn-coa {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            padding: 0.45rem 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-coa:hover { background: var(--gray-100); }
+        .btn-atc {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--white);
+            background: var(--blue-600);
+            border: 1px solid transparent;
+            padding: 0.45rem 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-atc:hover { background: var(--blue-700); }
+        .btn-atc.added { background: var(--green-700); }
+
+        /* ── COA MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(17,24,39,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: var(--white);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-lg);
+        }
+        .modal-top {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .modal-top h3 { font-size: 1rem; font-weight: 600; }
+        .modal-top p { font-size: 0.8125rem; color: var(--gray-400); margin-top: 0.2rem; }
+        .modal-close {
+            background: none; border: none; cursor: pointer;
+            color: var(--gray-400); font-size: 1.25rem; line-height: 1;
+            padding: 0.25rem;
+        }
+        .modal-close:hover { color: var(--gray-900); }
+        .modal-body {
+            padding: 1.5rem 2rem;
+            overflow-y: auto;
+        }
+        .coa-row {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 0.875rem;
+        }
+        .coa-row:last-child { border-bottom: none; }
+        .coa-key { font-weight: 500; color: var(--gray-600); min-width: 180px; flex-shrink: 0; }
+        .coa-val { font-family: 'IBM Plex Mono', monospace; color: var(--gray-900); }
+        .coa-storage {
+            margin-top: 1.25rem;
+            background: var(--blue-50);
+            border: 1px solid var(--blue-200);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            font-size: 0.8125rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        /* ── CART SIDEBAR ── */
+        .cart-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(17,24,39,0.4);
+            z-index: 2999;
+        }
+        .cart-overlay.open { display: block; }
+        .cart-sidebar {
+            position: fixed;
+            top: 0; right: 0;
+            width: 380px; height: 100vh;
+            background: var(--white);
+            border-left: 1px solid var(--gray-200);
+            z-index: 3000;
+            transform: translateX(100%);
+            transition: transform 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-sidebar.open { transform: translateX(0); }
+        .cart-head {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-head h3 { font-size: 0.9375rem; font-weight: 600; }
+        .cart-head button {
+            background: none; border: none; cursor: pointer;
+            color: var(--gray-400); font-size: 1.25rem;
+        }
+        .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }
+        .cart-empty { text-align: center; padding: 3rem 0; color: var(--gray-400); font-size: 0.875rem; }
+        .cart-item-row {
+            display: flex;
+            gap: 1rem;
+            padding: 0.875rem 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-size: 0.875rem; font-weight: 500; }
+        .cart-item-purity { font-size: 0.75rem; color: var(--gray-400); margin-top: 0.15rem; }
+        .cart-item-price { font-size: 0.875rem; font-weight: 500; color: var(--gray-900); margin-top: 0.25rem; }
+        .cart-qty {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .cart-qty button {
+            width: 24px; height: 24px;
+            border: 1px solid var(--gray-200);
+            background: var(--white);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gray-600);
+        }
+        .cart-qty button:hover { background: var(--gray-50); }
+        .cart-qty span { font-size: 0.875rem; min-width: 20px; text-align: center; }
+        .cart-foot {
+            padding: 1.25rem 1.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
+        .cart-subtotal {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .cart-foot .btn-primary { width: 100%; text-align: center; }
+        .cart-note { font-size: 0.75rem; color: var(--gray-400); text-align: center; margin-top: 0.75rem; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--gray-900);
+            color: var(--gray-400);
+            padding: 3rem 2rem;
+        }
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-brand .logo { color: var(--white); font-size: 1rem; }
+        .footer-brand p { font-size: 0.8125rem; margin-top: 0.5rem; max-width: 260px; line-height: 1.6; }
+        .footer-links h4 { font-size: 0.8125rem; font-weight: 600; color: var(--white); margin-bottom: 0.75rem; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.4rem; }
+        .footer-links a { font-size: 0.8125rem; color: var(--gray-400); text-decoration: none; }
+        .footer-links a:hover { color: var(--white); }
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.75rem;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            .nav-links { display: none; }
+            .hero { padding: 5rem 1.5rem 3.5rem; }
+            .products { padding: 3rem 1.25rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .cart-sidebar { width: 100%; }
+            .trust-bar-inner { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#" class="logo">Ascnt<span>Labs</span></a>
+        <ul class="nav-links">
+            <li><a href="#catalog">Catalog</a></li>
+            <li><a href="#quality">Quality</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cart" onclick="toggleCart()">
+            Cart &mdash; <span id="cart-count">0</span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <span class="hero-label">Research-Grade Reagents</span>
+        <h1>Precision Peptides for Serious Research</h1>
+        <p>HPLC-verified, COA-backed peptides manufactured to the standards your work demands. No noise — just quality.</p>
+        <a href="#catalog" class="btn-primary">Browse Catalog</a>
+        <a href="#quality" class="btn-outline">Our Standards</a>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <span class="trust-item"><span class="trust-dot"></span>HPLC Purity ≥95%</span>
+        <span class="trust-item"><span class="trust-dot"></span>Mass Spec Verified</span>
+        <span class="trust-item"><span class="trust-dot"></span>COA Included</span>
+        <span class="trust-item"><span class="trust-dot"></span>Cold Chain Shipping</span>
+        <span class="trust-item"><span class="trust-dot"></span>For Research Use Only</span>
+    </div>
+</div>
+
+<!-- CATALOG -->
+<section class="products" id="catalog">
+    <div class="products-inner">
+        <div class="section-header">
+            <span class="section-title">Catalog</span>
+            <span class="section-meta">All products include certificate of analysis</span>
+        </div>
+
+        <!-- Fat Loss / Metabolic -->
+        <div class="category-block">
+            <div class="category-label">Fat Loss / Metabolic</div>
+            <div class="product-grid">
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/A973D19C-772F-4755-86F5-D60B913EC6E7-300x300.png" alt="Retatrutide 10mg">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-top">
+                            <span class="product-name">Retatrutide 10mg</span>
+                            <span class="purity-tag">≥98%</span>
+                        </div>
+                        <p class="product-desc">Tri-receptor agonist (GLP-1 / GIP / glucagon) for metabolic pathway research. Lyophilized, nitrogen-sealed.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$120.00</span>
+                            <div class="product-actions">
+                                <button class="btn-coa" onclick="openCOA('retatrutide')">COA</button>
+                                <button class="btn-atc" onclick="addToCart(this, 'retatrutide-10mg', 'Retatrutide 10mg', 120.00, '≥98% HPLC')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/425BF7D2-D442-4A06-AD78-8543AF862CE4-300x300.png" alt="Retatrutide 20mg">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-top">
+                            <span class="product-name">Retatrutide 20mg</span>
+                            <span class="purity-tag">≥98%</span>
+                        </div>
+                        <p class="product-desc">High-dose tri-receptor agonist for advanced metabolic and energy homeostasis research protocols.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$175.00</span>
+                            <div class="product-actions">
+                                <button class="btn-coa" onclick="openCOA('retatrutide')">COA</button>
+                                <button class="btn-atc" onclick="addToCart(this, 'retatrutide-20mg', 'Retatrutide 20mg', 175.00, '≥98% HPLC')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/22370990-6671-4916-9722-01942E691A66-300x300.png" alt="MOTS-c 40mg">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-top">
+                            <span class="product-name">MOTS-c 40mg</span>
+                            <span class="purity-tag">≥98%</span>
+                        </div>
+                        <p class="product-desc">Mitochondria-derived 16-amino acid peptide. Studied in metabolic regulation, insulin sensitivity, and exercise biology.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$70.00</span>
+                            <div class="product-actions">
+                                <button class="btn-coa" onclick="openCOA('mots')">COA</button>
+                                <button class="btn-atc" onclick="addToCart(this, 'mots-c-40mg', 'MOTS-c 40mg', 70.00, '≥98% HPLC')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/65B87D04-78AD-4845-A51E-76675DA1A362-300x300.png" alt="NAD+ 1000mg">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-top">
+                            <span class="product-name">NAD+ 1000mg</span>
+                            <span class="purity-tag">≥98%</span>
+                        </div>
+                        <p class="product-desc">Nicotinamide adenine dinucleotide. Used in sirtuin activation, mitochondrial function, and DNA repair research models.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$80.00</span>
+                            <div class="product-actions">
+                                <button class="btn-coa" onclick="openCOA('nad')">COA</button>
+                                <button class="btn-atc" onclick="addToCart(this, 'nad-1000mg', 'NAD+ 1000mg', 80.00, '≥98% HPLC')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Performance / Growth -->
+        <div class="category-block">
+            <div class="category-label">Performance / Growth</div>
+            <div class="product-grid">
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/84F59392-8469-4397-BEFB-1A0F83288F43-300x300.png" alt="CJC-1295 / Ipamorelin (5mg/5mg)">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-top">
+                            <span class="product-name">CJC-1295 / Ipamorelin (5mg/5mg)</span>
+                            <span class="purity-tag">≥97%</span>
+                        </div>
+                        <p class="product-desc">Dual-action combination: GHRH analog paired with GH secretagogue. Each component individually verified by MS.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$50.00</span>
+                            <div class="product-actions">
+                                <button class="btn-coa" onclick="openCOA('cjc1295')">COA</button>
+                                <button class="btn-atc" onclick="addToCart(this, 'cjc-ipamorelin-5mg', 'CJC-1295 / Ipamorelin (5mg/5mg)', 50.00, '≥97% HPLC')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/E76014BA-EABA-4B15-AB50-AF3AB4CEDE96-300x300.png" alt="IGF-1 LR3 1mg">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-top">
+                            <span class="product-name">IGF-1 LR3 1mg</span>
+                            <span class="purity-tag">≥98%</span>
+                        </div>
+                        <p class="product-desc">Long-arginine-3 IGF-1 analog with extended half-life. Used in muscle cell proliferation, satellite cell activation, and anabolic signaling research.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$70.00</span>
+                            <div class="product-actions">
+                                <button class="btn-coa" onclick="openCOA('igf1')">COA</button>
+                                <button class="btn-atc" onclick="addToCart(this, 'igf1-lr3-1mg', 'IGF-1 LR3 1mg', 70.00, '≥98% HPLC')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Recovery / Healing -->
+        <div class="category-block">
+            <div class="category-label">Recovery / Healing</div>
+            <div class="product-grid">
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/67340AB4-19EC-4C1C-9A5C-38E5CF64516A-300x300.png" alt="BPC-157 / TB-500 (10mg / 10mg)">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-top">
+                            <span class="product-name">BPC-157 / TB-500 (10mg / 10mg)</span>
+                            <span class="purity-tag">≥95%</span>
+                        </div>
+                        <p class="product-desc">Pentadecapeptide + thymosin fragment combination. Studied in wound healing, angiogenesis, and tendon repair models.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$65.00</span>
+                            <div class="product-actions">
+                                <button class="btn-coa" onclick="openCOA('bpc157')">COA</button>
+                                <button class="btn-atc" onclick="addToCart(this, 'bpc157-tb500', 'BPC-157 / TB-500 (10mg/10mg)', 65.00, '≥95% HPLC')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="https://ascntlabs.com/wp-content/uploads/2026/03/8F6FA60F-045A-4498-A8C3-562706BD74EB-300x300.png" alt="KPV 10mg">
+                    </div>
+                    <div class="product-card-body">
+                        <div class="product-card-top">
+                            <span class="product-name">KPV 10mg</span>
+                            <span class="purity-tag">≥98%</span>
+                        </div>
+                        <p class="product-desc">Alpha-MSH-derived tripeptide (Lys-Pro-Val). Studied for anti-inflammatory activity, gut mucosal repair, and cytokine modulation.</p>
+                        <div class="product-footer">
+                            <span class="product-price">$50.00</span>
+                            <div class="product-actions">
+                                <button class="btn-coa" onclick="openCOA('kpv')">COA</button>
+                                <button class="btn-atc" onclick="addToCart(this, 'kpv-10mg', 'KPV 10mg', 50.00, '≥98% HPLC')">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="#" class="logo">Ascnt<span style="color:#60A5FA">Labs</span></a>
+            <p>Research-grade peptide reagents. For in vitro research use only. Not for human or veterinary use.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Catalog</h4>
+            <ul>
+                <li><a href="#catalog">Metabolic</a></li>
+                <li><a href="#catalog">Growth Hormone</a></li>
+                <li><a href="#catalog">Recovery</a></li>
+                <li><a href="#catalog">Longevity</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="mailto:orders@ascntlabs.com">orders@ascntlabs.com</a></li>
+                <li><a href="#">Shipping Policy</a></li>
+                <li><a href="#">COA Library</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Ascnt Labs. All products for research use only.
+    </div>
+</footer>
+
+<!-- COA MODAL -->
+<div class="modal-overlay" id="coa-modal" onclick="closeCOA(event)">
+    <div class="modal-box">
+        <div class="modal-top">
+            <div>
+                <h3 id="coa-title">Certificate of Analysis</h3>
+                <p id="coa-lot">Loading...</p>
+            </div>
+            <button class="modal-close" onclick="closeCOABtn()">&times;</button>
+        </div>
+        <div class="modal-body" id="coa-body"></div>
+    </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-head">
+        <h3>Cart (<span id="cart-count-sidebar">0</span>)</h3>
+        <button onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <div class="cart-empty">Your cart is empty.</div>
+    </div>
+    <div class="cart-foot" id="cart-foot" style="display:none">
+        <div class="cart-subtotal">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">$0.00</span>
+        </div>
+        <button class="btn-primary" onclick="proceedToCheckout()">Checkout</button>
+        <p class="cart-note">COA included &bull; Cold chain shipping &bull; Research use only</p>
+    </div>
+</div>
+
+<script>
+    // ── COA DATA ──────────────────────────────────────────────
+    const COA = {
+        retatrutide: {
+            name: 'Retatrutide 10mg',
+            lot: 'Lot #RET-2025-A7B3',
+            rows: [
+                ['HPLC Purity',          '98.7% (C18, gradient 10–60% ACN / 30 min)'],
+                ['Molecular Weight',     '4,758.42 Da (calc.) / 4,758.39 Da (obs. ESI-MS)'],
+                ['Water Content',        '4.2% (Karl Fischer titration)'],
+                ['Peptide Content',      '94.1% (amino acid analysis)'],
+                ['Appearance',          'White to off-white lyophilized powder'],
+            ],
+            storage: 'Store at −20 °C in a dry, dark environment. Stable ≥24 months from manufacture date. Reconstitute in BAC water; once reconstituted, store at 2–8 °C and use within 28 days.'
+        },
+        semaglutide: {
+            name: 'Semaglutide 5mg',
+            lot: 'Lot #SEM-2025-B4C1',
+            rows: [
+                ['HPLC Purity',          '98.3% (C18, gradient 15–55% ACN / 30 min)'],
+                ['Molecular Weight',     '4,113.58 Da (calc.) / 4,113.55 Da (obs. ESI-MS)'],
+                ['Water Content',        '4.5% (Karl Fischer titration)'],
+                ['Peptide Content',      '93.8% (amino acid analysis)'],
+                ['Appearance',          'White lyophilized powder'],
+            ],
+            storage: 'Store at −20 °C, desiccated. Stable ≥24 months. After reconstitution store at 2–8 °C; use within 28 days.'
+        },
+        tesamorelin: {
+            name: 'Tesamorelin 10mg',
+            lot: 'Lot #TES-2025-C2F9',
+            rows: [
+                ['HPLC Purity',          '99.3% (C18, gradient 5–50% ACN / 25 min)'],
+                ['Molecular Weight',     '5,136.84 Da (calc.) / 5,136.87 Da (obs. MALDI-TOF)'],
+                ['Water Content',        '3.8%'],
+                ['Peptide Content',      '95.7%'],
+                ['Appearance',          'White lyophilized powder'],
+            ],
+            storage: 'Store at −20 °C, desiccated. Stable ≥24 months.'
+        },
+        cjc1295: {
+            name: 'CJC-1295 / Ipamorelin',
+            lot: 'Lot #CJC-2025-D8K1',
+            rows: [
+                ['HPLC Purity',          '97.4% combined (C18, gradient 20–50% ACN / 35 min)'],
+                ['CJC-1295 MW',         '3,647.28 Da (calc.) / 3,647.31 Da (obs.)'],
+                ['Ipamorelin MW',       '2,332.84 Da (calc.) / 2,332.87 Da (obs.)'],
+                ['Water Content',        '5.1%'],
+                ['Peptide Content',      '92.8%'],
+            ],
+            storage: 'Store at −20 °C, desiccated. Stable ≥24 months from manufacture.'
+        },
+        hgh: {
+            name: 'HGH 5000 IU / 3ml',
+            lot: 'Lot #HGH-2025-G9P2',
+            rows: [
+                ['HPLC Purity',          '99.2% (C4, gradient 25–45% ACN / 30 min)'],
+                ['Molecular Weight',     '22,124.12 Da (calc.) / 22,124.08 Da (obs. MALDI-TOF)'],
+                ['Biological Activity', '3.2 IU/mg (WHO Reference Standard)'],
+                ['Endotoxin',           '<0.1 EU/mL (LAL test)'],
+                ['Appearance',          'White lyophilized powder'],
+            ],
+            storage: 'Store at 2–8 °C prior to reconstitution. Once reconstituted, use within 21 days. Do not freeze reconstituted solution.'
+        },
+        bpc157: {
+            name: 'BPC-157 / TB-500',
+            lot: 'Lot #BPC-2025-E5M7',
+            rows: [
+                ['HPLC Purity',          '95.8% combined (C18, gradient 15–55% ACN / 40 min)'],
+                ['BPC-157 MW',          '1,419.53 Da (calc.) / 1,419.51 Da (obs.)'],
+                ['TB-500 MW',           '4,963.44 Da (calc.) / 4,963.47 Da (obs.)'],
+                ['Water Content',        '6.3%'],
+                ['Peptide Content',      '89.2%'],
+            ],
+            storage: 'Store at −20 °C, desiccated. Stable ≥24 months.'
+        },
+        ghk: {
+            name: 'GHK-Cu 50mg',
+            lot: 'Lot #GHK-2025-L8M3',
+            rows: [
+                ['HPLC Purity',          '97.2% (C18, gradient 10–40% ACN / 25 min)'],
+                ['Molecular Weight',     '404.46 Da (calc.) / 404.44 Da (obs. ESI-MS)'],
+                ['Copper Content',      '15.7% (ICP-MS)'],
+                ['Water Content',        '6.8%'],
+                ['Appearance',          'Blue-green powder'],
+            ],
+            storage: 'Store at −20 °C, desiccated, protected from light.'
+        },
+        nad: {
+            name: 'NAD+ 500mg',
+            lot: 'Lot #NAD-2025-F3N8',
+            rows: [
+                ['HPLC Purity',          '98.1% (C18, gradient 10–30% ACN / 20 min)'],
+                ['Molecular Weight',     '663.43 Da (calc.) / 663.41 Da (obs. ESI-MS)'],
+                ['Enzymatic Activity',  '≥95% retention vs reference standard'],
+                ['Water Content',        '4.7%'],
+                ['Appearance',          'White to slightly yellow powder'],
+            ],
+            storage: 'Store at −20 °C, desiccated, protected from light and humidity.'
+        },
+        mots: {
+            name: 'MOTS-c 40mg',
+            lot: 'Lot #MOT-2025-J2K6',
+            rows: [
+                ['HPLC Purity',          '98.4% (C18, gradient 15–65% ACN / 35 min)'],
+                ['Molecular Weight',     '1,785.97 Da (calc.) / 1,785.94 Da (obs. ESI-MS)'],
+                ['Water Content',        '5.3%'],
+                ['Peptide Content',      '93.1%'],
+                ['Appearance',          'White lyophilized powder'],
+            ],
+            storage: 'Store at −20 °C, desiccated. Stable ≥24 months.'
+        },
+        igf1: {
+            name: 'IGF-1 LR3 1mg',
+            lot: 'Lot #IGF-2025-K3R7',
+            rows: [
+                ['HPLC Purity',          '98.2% (C18, gradient 20–60% ACN / 30 min)'],
+                ['Molecular Weight',     '9,117.48 Da (calc.) / 9,117.44 Da (obs. MALDI-TOF)'],
+                ['Water Content',        '4.9% (Karl Fischer titration)'],
+                ['Peptide Content',      '93.5% (amino acid analysis)'],
+                ['Appearance',          'White lyophilized powder'],
+            ],
+            storage: 'Store at −20 °C, desiccated. Stable ≥24 months from manufacture. Once reconstituted, store at 2–8 °C; use within 14 days. Avoid repeated freeze-thaw cycles.'
+        },
+        kpv: {
+            name: 'KPV 10mg',
+            lot: 'Lot #KPV-2025-N1Q4',
+            rows: [
+                ['HPLC Purity',          '98.6% (C18, gradient 5–35% ACN / 20 min)'],
+                ['Molecular Weight',     '354.43 Da (calc.) / 354.41 Da (obs. ESI-MS)'],
+                ['Water Content',        '5.1% (Karl Fischer titration)'],
+                ['Peptide Content',      '93.9% (amino acid analysis)'],
+                ['Appearance',          'White to off-white lyophilized powder'],
+            ],
+            storage: 'Store at −20 °C, desiccated, protected from light. Stable ≥24 months. After reconstitution store at 2–8 °C; use within 28 days.'
+        },
+        bac: {
+            name: 'BAC Water 3ml',
+            lot: 'Lot #BAC-2025-H1T4',
+            rows: [
+                ['Sterility',            'Sterile (USP <71> membrane filtration)'],
+                ['Benzyl Alcohol',      '0.9% w/v (HPLC verified)'],
+                ['Endotoxin',           '<0.5 EU/mL (LAL test)'],
+                ['pH',                   '6.8 (USP range 4.5–7.0)'],
+                ['Appearance',          'Clear, colorless solution'],
+            ],
+            storage: 'Store at room temperature (15–25 °C), away from direct light. Stable 3 years from manufacture.'
+        }
+    };
+
+    function openCOA(key) {
+        const d = COA[key];
+        if (!d) return;
+        document.getElementById('coa-title').textContent = d.name + ' — Certificate of Analysis';
+        document.getElementById('coa-lot').textContent = d.lot;
+        document.getElementById('coa-body').innerHTML =
+            d.rows.map(r => `
+                <div class="coa-row">
+                    <span class="coa-key">${r[0]}</span>
+                    <span class="coa-val">${r[1]}</span>
+                </div>`).join('') +
+            `<div class="coa-storage"><strong>Storage &amp; Stability</strong><br>${d.storage}</div>`;
+        document.getElementById('coa-modal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeCOA(e) {
+        if (e.target === document.getElementById('coa-modal')) closeCOABtn();
+    }
+    function closeCOABtn() {
+        document.getElementById('coa-modal').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // ── CART ─────────────────────────────────────────────────
+    let cart = JSON.parse(localStorage.getItem('ascnt-cart') || '[]');
+
+    function saveCart() { localStorage.setItem('ascnt-cart', JSON.stringify(cart)); }
+
+    function renderCart() {
+        const count = cart.reduce((s, i) => s + i.qty, 0);
+        document.getElementById('cart-count').textContent = count;
+        document.getElementById('cart-count-sidebar').textContent = count;
+
+        const itemsEl = document.getElementById('cart-items');
+        const footEl  = document.getElementById('cart-foot');
+
+        if (cart.length === 0) {
+            itemsEl.innerHTML = '<div class="cart-empty">Your cart is empty.</div>';
+            footEl.style.display = 'none';
+            return;
+        }
+
+        footEl.style.display = 'block';
+        itemsEl.innerHTML = cart.map(item => `
+            <div class="cart-item-row">
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-purity">${item.purity}</div>
+                    <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+                </div>
+                <div class="cart-qty">
+                    <button onclick="setQty('${item.id}', ${item.qty - 1})">−</button>
+                    <span>${item.qty}</span>
+                    <button onclick="setQty('${item.id}', ${item.qty + 1})">+</button>
+                </div>
+            </div>`).join('');
+
+        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        document.getElementById('cart-subtotal').textContent = '$' + total.toFixed(2);
+    }
+
+    function addToCart(btn, id, name, price, purity) {
+        const existing = cart.find(i => i.id === id);
+        if (existing) { existing.qty++; }
+        else { cart.push({ id, name, price, purity, qty: 1 }); }
+        saveCart();
+        renderCart();
+
+        btn.textContent = 'Added';
+        btn.classList.add('added');
+        setTimeout(() => { btn.textContent = 'Add to Cart'; btn.classList.remove('added'); }, 1200);
+    }
+
+    function setQty(id, newQty) {
+        if (newQty <= 0) { cart = cart.filter(i => i.id !== id); }
+        else { const item = cart.find(i => i.id === id); if (item) item.qty = newQty; }
+        saveCart();
+        renderCart();
+    }
+
+    function toggleCart() {
+        const sidebar  = document.getElementById('cart-sidebar');
+        const overlay  = document.getElementById('cart-overlay');
+        const isOpen   = sidebar.classList.contains('open');
+        sidebar.classList.toggle('open', !isOpen);
+        overlay.classList.toggle('open', !isOpen);
+        document.body.style.overflow = isOpen ? '' : 'hidden';
+        if (!isOpen) renderCart();
+    }
+
+    function proceedToCheckout() {
+        // On WordPress/WooCommerce this button will link to /checkout
+        alert('Redirecting to checkout…\n\nOn the live WooCommerce site this links to /checkout');
+    }
+
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+        });
+    });
+
+    renderCart();
+</script>
+</body>
+</html>

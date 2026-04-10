@@ -1,0 +1,20 @@
+<!--
+  Source: WordPress block editor inspect panel
+  Page: Latest Products / Shop page
+  Date: 2026-04-09
+  Issue: woocommerce/product-button missing from product template
+
+  Fix: Add inside each product's core/group (Stack) after the price block:
+  <!-- wp:woocommerce/product-button {"textAlign":"center","fontSize":"small"} /-- >
+-->
+<ul tabindex="0" class="block-editor-block-list__block wp-block is-selected wp-container-woocommerce-product-template-is-layout-2114 is-layout-flow wp-block-woocommerce-product-template-is-layout-flow wc-block-product-template wc-block-product-template__responsive columns-4 is-product-collection-layout-flex wp-elements-1498 wp-block-woocommerce-product-template" id="block-4b7ae6e1-3f4c-4148-b8ab-b39a8a90da86" role="document" aria-label="Block: Product Template" data-block="4b7ae6e1-3f4c-4148-b8ab-b39a8a90da86" data-type="woocommerce/product-template" data-title="Product Template" draggable="true">
+  <!-- Product cards truncated for brevity — full source pasted by user 2026-04-09 -->
+  <!-- Inner block structure per card:
+    woocommerce/product-image
+    core/group (Stack, nfd-gap-0, is-vertical)
+      core/post-title
+      core/post-terms (product_cat)
+      woocommerce/product-price
+      *** woocommerce/product-button MISSING — needs to be added here ***
+  -->
+</ul>
