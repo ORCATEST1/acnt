@@ -134,6 +134,7 @@
                     <option value="bpc157">BPC-157 / TB-500 (10mg/10mg)</option>
                     <option value="kpv">KPV 10mg</option>
                     <option value="ghk">GHK-Cu 100mg</option>
+                    <option value="bac">BAC Water 3ml</option>
                 </select>
                 <div class="ascnt-modal-lot" id="ascnt-coa-lot"></div>
             </div>
@@ -154,7 +155,8 @@ var ASCNT_COA = {
     igf1:          { lot:'COA #2603230201 · Lot: Yellow Cap', rows:[['Testing Lab','Freedom Diagnostics · FreedomDiagnosticsTesting.com'],['Accession Number','2603230201 · Search Code: ASCN2603230201'],['Client','ASCNT Wellness LLC'],['Method','HPLC with UV Detection + LC/MS-MS'],['Identity','IGF-LR3'],['Purity','99.496%'],['Lot','Yellow Cap'],['Appearance','White Lyophilized Powder'],['Received / Reported','03/23/2026 / 03/24/2026'],['Result','PASS']], storage:'Store at −20 °C, desiccated. Stable ≥24 months from manufacture. Once reconstituted, store at 2–8 °C; use within 14 days. Avoid repeated freeze-thaw cycles.' },
     bpc157:        { lot:'COA #2603230199 · Lot: Purple Cap', rows:[['Testing Lab','Freedom Diagnostics · FreedomDiagnosticsTesting.com'],['Accession Number','2603230199 · Search Code: ASCN2603230199'],['Client','ASCNT Wellness LLC'],['Method','HPLC with UV Detection + LC/MS-MS'],['Identity','BPC-157 / Thymosin Beta-4 (TB-500)'],['Purity','99.588% (combined)'],['Net Content — BPC-157','10.95 mg'],['Net Content — TB-500','10.58 mg'],['Lot','Purple Cap'],['Appearance','White Lyophilized Powder'],['Received / Reported','03/23/2026 / 03/24/2026'],['Result','PASS']], storage:'Store at −20 °C, desiccated. Stable ≥24 months. Reconstitute in BAC water; once reconstituted store at 2–8 °C and use within 28 days.' },
     kpv:           { lot:'COA #2603230194 · Lot: Purple Cap', rows:[['Testing Lab','Freedom Diagnostics · FreedomDiagnosticsTesting.com'],['Accession Number','2603230194 · Search Code: ASCN2603230194'],['Client','ASCNT Wellness LLC'],['Method','HPLC with UV Detection + LC/MS-MS'],['Identity','KPV'],['Purity','99.061%'],['Net Peptide Content','9.40 mg'],['Lot','Purple Cap'],['Appearance','White Lyophilized Powder'],['Received / Reported','03/23/2026 / 03/24/2026'],['Result','PASS']], storage:'Store at −20 °C, desiccated, protected from light. Stable ≥24 months. After reconstitution store at 2–8 °C; use within 28 days.' },
-    ghk:           { lot:'COA #2603230202 · Lot: Purple Cap', rows:[['Testing Lab','Freedom Diagnostics · FreedomDiagnosticsTesting.com'],['Accession Number','2603230202 · Search Code: ASCN2603230202'],['Client','ASCNT Wellness LLC'],['Method','HPLC with UV Detection + LC/MS-MS'],['Identity','GHK-Cu'],['Purity','99.672%'],['Net Peptide Content','105.92 mg'],['Lot','Purple Cap'],['Appearance','Blue Lyophilized Powder'],['Received / Reported','03/23/2026 / 03/24/2026'],['Result','PASS']], storage:'Store at −20 °C, desiccated, protected from light. Stable ≥24 months.' }
+    ghk:           { lot:'COA #2603230202 · Lot: Purple Cap', rows:[['Testing Lab','Freedom Diagnostics · FreedomDiagnosticsTesting.com'],['Accession Number','2603230202 · Search Code: ASCN2603230202'],['Client','ASCNT Wellness LLC'],['Method','HPLC with UV Detection + LC/MS-MS'],['Identity','GHK-Cu'],['Purity','99.672%'],['Net Peptide Content','105.92 mg'],['Lot','Purple Cap'],['Appearance','Blue Lyophilized Powder'],['Received / Reported','03/23/2026 / 03/24/2026'],['Result','PASS']], storage:'Store at −20 °C, desiccated, protected from light. Stable ≥24 months.' },
+    bac:           { lot:'Lot #BAC-2026-H1T4', rows:[['Testing Lab','Ascnt Labs — Internal QC'],['Sterility','Sterile (USP <71> membrane filtration)'],['Benzyl Alcohol','0.9% w/v (HPLC verified)'],['Endotoxin','<0.5 EU/mL (LAL test)'],['pH','6.8 (USP range 4.5–7.0)'],['Appearance','Clear, colorless solution'],['Result','PASS']], storage:'Store at room temperature (15–25 °C), away from direct light. Stable 3 years from manufacture.' }
 };
 function ascntOpenCOA() { document.getElementById('ascnt-coa-modal').classList.add('open'); document.body.style.overflow='hidden'; ascntRenderCOA(document.getElementById('ascnt-product-select').value); }
 function ascntCloseCOA() { document.getElementById('ascnt-coa-modal').classList.remove('open'); document.body.style.overflow=''; }
@@ -601,6 +603,35 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                         <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
                             <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$65.00</span>
                             <a href="/product/ghk-cu-100mg/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Category: Supplies -->
+        <div style="margin-top:3rem;">
+            <div style="font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9CA3AF;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+                Supplies
+                <span style="flex:1;height:1px;background:#E5E7EB;display:inline-block;"></span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;">
+
+                <!-- BAC Water 3ml -->
+                <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
+                    <div style="background:#F9FAFB;border-bottom:1px solid #E5E7EB;height:180px;display:flex;align-items:center;justify-content:center;padding:1.25rem;">
+                        <span style="font-size:0.8rem;color:#9CA3AF;font-family:'IBM Plex Mono',monospace;">Image coming soon</span>
+                    </div>
+                    <div style="padding:1rem 1.125rem;display:flex;flex-direction:column;flex:1;">
+                        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.35rem;">
+                            <span style="font-size:0.9rem;font-weight:600;color:#111827;line-height:1.3;">BAC Water 3ml</span>
+                            <span style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#2563EB;background:#EFF6FF;padding:0.15rem 0.4rem;border-radius:4px;flex-shrink:0;margin-left:0.4rem;">Sterile</span>
+                        </div>
+                        <span style="font-size:0.7rem;font-weight:500;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Supplies</span>
+                        <div style="display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid #F3F4F6;margin-top:auto;">
+                            <span style="font-size:0.9375rem;font-weight:600;color:#111827;">$10.00</span>
+                            <a href="/product/bac-water-3ml/" style="font-size:0.8rem;font-weight:500;color:#fff;background:#2563EB;padding:0.4rem 0.875rem;border-radius:6px;text-decoration:none;" onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">Add to Cart</a>
                         </div>
                     </div>
                 </div>
