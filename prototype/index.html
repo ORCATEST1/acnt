@@ -529,9 +529,187 @@
             .cart-sidebar { width: 100%; }
             .trust-bar-inner { gap: 1rem; }
         }
+
+        /* ── SPLASH SCREEN ── */
+        .splash-screen {
+            position: fixed;
+            inset: 0;
+            background: #06090f;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                        visibility 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .splash-bg-lines {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .splash-bg-lines::before,
+        .splash-bg-lines::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            animation: splashRings 3s ease-out forwards;
+        }
+        .splash-bg-lines::before {
+            width: 600px; height: 600px;
+            animation-delay: 0.2s;
+        }
+        .splash-bg-lines::after {
+            width: 900px; height: 900px;
+            animation-delay: 0.5s;
+        }
+        @keyframes splashRings {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+            40%  { opacity: 1; }
+            to   { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+        }
+        .splash-content {
+            position: relative;
+            text-align: center;
+            user-select: none;
+        }
+        .splash-wordmark {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(5rem, 15vw, 10rem);
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(28px) scale(0.96);
+            animation: splashWordIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+        }
+        .splash-wordmark .dot { color: #2563EB; }
+        .splash-sub {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: clamp(0.6rem, 1.5vw, 0.8125rem);
+            font-weight: 400;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-top: 1.25rem;
+            opacity: 0;
+            animation: splashWordIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+        }
+        .splash-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(37, 99, 235, 0.5);
+            margin: 1.5rem auto 0;
+            opacity: 0;
+            animation: splashWordIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+        }
+        .splash-skip {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: rgba(255,255,255,0.2);
+            opacity: 0;
+            animation: splashWordIn 0.6s ease 1s forwards;
+        }
+        .splash-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #1D4ED8, #2563EB, #60A5FA);
+            animation: splashProgress 2.8s linear 0.2s forwards;
+            width: 0;
+        }
+        @keyframes splashWordIn {
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes splashProgress {
+            to { width: 100%; }
+        }
+
+        /* ── COA IMAGE IN MODAL ── */
+        .coa-img-section {
+            padding: 1.25rem 2rem 0;
+            border-bottom: 1px solid var(--gray-100);
+            text-align: center;
+        }
+        .coa-img-section img {
+            max-width: 100%;
+            max-height: 220px;
+            object-fit: contain;
+            border-radius: 6px;
+            border: 1px solid var(--gray-200);
+            display: block;
+            margin: 0 auto;
+        }
+        .coa-img-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--blue-600);
+            text-decoration: none;
+            margin: 0.6rem 0 0.9rem;
+        }
+        .coa-img-link:hover { text-decoration: underline; }
+
+        /* ── PRODUCT CARD IMAGE TABS ── */
+        .img-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--gray-200);
+            background: var(--white);
+        }
+        .img-tab {
+            flex: 1;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            background: none;
+            border: none;
+            padding: 0.4rem 0;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: color 0.15s, border-color 0.15s;
+        }
+        .img-tab.active {
+            color: var(--blue-600);
+            border-bottom-color: var(--blue-600);
+        }
+        .img-pane { display: none; }
+        .img-pane.active { display: flex; }
     </style>
 </head>
 <body>
+
+<!-- SPLASH SCREEN -->
+<div class="splash-screen" id="splash-screen" onclick="dismissSplash()">
+    <div class="splash-bg-lines"></div>
+    <div class="splash-content">
+        <div class="splash-wordmark">ASCNT<span class="dot">.</span></div>
+        <div class="splash-divider"></div>
+        <div class="splash-sub">Research-Grade Peptides &mdash; Est. 2025</div>
+    </div>
+    <span class="splash-skip">Click anywhere to enter</span>
+    <div class="splash-progress"></div>
+</div>
 
 <!-- NAV -->
 <nav class="nav">
@@ -584,8 +762,16 @@
             <div class="product-grid">
 
                 <div class="product-card">
-                    <div class="product-img-wrap">
+                    <div class="img-tabs">
+                        <button class="img-tab active" onclick="switchTab(this,'prod-ret10')">Product</button>
+                        <button class="img-tab" onclick="switchTab(this,'coa-ret10')">COA Photo</button>
+                    </div>
+                    <div class="product-img-wrap img-pane active" id="prod-ret10">
                         <img src="https://ascntlabs.com/wp-content/uploads/2026/03/A973D19C-772F-4755-86F5-D60B913EC6E7-300x300.png" alt="Retatrutide 10mg">
+                    </div>
+                    <div class="product-img-wrap img-pane" id="coa-ret10">
+                        <!-- TODO: set coaImage on COA['retatrutide'] and it will auto-populate; or place Drive img here directly -->
+                        <img src="" alt="Retatrutide 10mg COA" onerror="this.parentElement.innerHTML='<span style=\'color:var(--gray-400);font-size:0.8125rem\'>COA image coming soon</span>'">
                     </div>
                     <div class="product-card-body">
                         <div class="product-card-top">
@@ -604,8 +790,15 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-img-wrap">
+                    <div class="img-tabs">
+                        <button class="img-tab active" onclick="switchTab(this,'prod-ret20')">Product</button>
+                        <button class="img-tab" onclick="switchTab(this,'coa-ret20')">COA Photo</button>
+                    </div>
+                    <div class="product-img-wrap img-pane active" id="prod-ret20">
                         <img src="https://ascntlabs.com/wp-content/uploads/2026/03/425BF7D2-D442-4A06-AD78-8543AF862CE4-300x300.png" alt="Retatrutide 20mg">
+                    </div>
+                    <div class="product-img-wrap img-pane" id="coa-ret20">
+                        <img src="" alt="Retatrutide 20mg COA" onerror="this.parentElement.innerHTML='<span style=\'color:var(--gray-400);font-size:0.8125rem\'>COA image coming soon</span>'">
                     </div>
                     <div class="product-card-body">
                         <div class="product-card-top">
@@ -624,8 +817,15 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-img-wrap">
+                    <div class="img-tabs">
+                        <button class="img-tab active" onclick="switchTab(this,'prod-mots')">Product</button>
+                        <button class="img-tab" onclick="switchTab(this,'coa-mots')">COA Photo</button>
+                    </div>
+                    <div class="product-img-wrap img-pane active" id="prod-mots">
                         <img src="https://ascntlabs.com/wp-content/uploads/2026/03/22370990-6671-4916-9722-01942E691A66-300x300.png" alt="MOTS-c 40mg">
+                    </div>
+                    <div class="product-img-wrap img-pane" id="coa-mots">
+                        <img src="" alt="MOTS-c 40mg COA" onerror="this.parentElement.innerHTML='<span style=\'color:var(--gray-400);font-size:0.8125rem\'>COA image coming soon</span>'">
                     </div>
                     <div class="product-card-body">
                         <div class="product-card-top">
@@ -644,8 +844,15 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-img-wrap">
+                    <div class="img-tabs">
+                        <button class="img-tab active" onclick="switchTab(this,'prod-nad')">Product</button>
+                        <button class="img-tab" onclick="switchTab(this,'coa-nad')">COA Photo</button>
+                    </div>
+                    <div class="product-img-wrap img-pane active" id="prod-nad">
                         <img src="https://ascntlabs.com/wp-content/uploads/2026/03/65B87D04-78AD-4845-A51E-76675DA1A362-300x300.png" alt="NAD+ 1000mg">
+                    </div>
+                    <div class="product-img-wrap img-pane" id="coa-nad">
+                        <img src="" alt="NAD+ 1000mg COA" onerror="this.parentElement.innerHTML='<span style=\'color:var(--gray-400);font-size:0.8125rem\'>COA image coming soon</span>'">
                     </div>
                     <div class="product-card-body">
                         <div class="product-card-top">
@@ -672,8 +879,15 @@
             <div class="product-grid">
 
                 <div class="product-card">
-                    <div class="product-img-wrap">
+                    <div class="img-tabs">
+                        <button class="img-tab active" onclick="switchTab(this,'prod-cjc')">Product</button>
+                        <button class="img-tab" onclick="switchTab(this,'coa-cjc')">COA Photo</button>
+                    </div>
+                    <div class="product-img-wrap img-pane active" id="prod-cjc">
                         <img src="https://ascntlabs.com/wp-content/uploads/2026/03/84F59392-8469-4397-BEFB-1A0F83288F43-300x300.png" alt="CJC-1295 / Ipamorelin (5mg/5mg)">
+                    </div>
+                    <div class="product-img-wrap img-pane" id="coa-cjc">
+                        <img src="" alt="CJC-1295/Ipamorelin COA" onerror="this.parentElement.innerHTML='<span style=\'color:var(--gray-400);font-size:0.8125rem\'>COA image coming soon</span>'">
                     </div>
                     <div class="product-card-body">
                         <div class="product-card-top">
@@ -692,8 +906,15 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-img-wrap">
+                    <div class="img-tabs">
+                        <button class="img-tab active" onclick="switchTab(this,'prod-igf')">Product</button>
+                        <button class="img-tab" onclick="switchTab(this,'coa-igf')">COA Photo</button>
+                    </div>
+                    <div class="product-img-wrap img-pane active" id="prod-igf">
                         <img src="https://ascntlabs.com/wp-content/uploads/2026/03/E76014BA-EABA-4B15-AB50-AF3AB4CEDE96-300x300.png" alt="IGF-1 LR3 1mg">
+                    </div>
+                    <div class="product-img-wrap img-pane" id="coa-igf">
+                        <img src="" alt="IGF-1 LR3 1mg COA" onerror="this.parentElement.innerHTML='<span style=\'color:var(--gray-400);font-size:0.8125rem\'>COA image coming soon</span>'">
                     </div>
                     <div class="product-card-body">
                         <div class="product-card-top">
@@ -720,8 +941,15 @@
             <div class="product-grid">
 
                 <div class="product-card">
-                    <div class="product-img-wrap">
+                    <div class="img-tabs">
+                        <button class="img-tab active" onclick="switchTab(this,'prod-bpc')">Product</button>
+                        <button class="img-tab" onclick="switchTab(this,'coa-bpc')">COA Photo</button>
+                    </div>
+                    <div class="product-img-wrap img-pane active" id="prod-bpc">
                         <img src="https://ascntlabs.com/wp-content/uploads/2026/03/67340AB4-19EC-4C1C-9A5C-38E5CF64516A-300x300.png" alt="BPC-157 / TB-500 (10mg / 10mg)">
+                    </div>
+                    <div class="product-img-wrap img-pane" id="coa-bpc">
+                        <img src="" alt="BPC-157/TB-500 COA" onerror="this.parentElement.innerHTML='<span style=\'color:var(--gray-400);font-size:0.8125rem\'>COA image coming soon</span>'">
                     </div>
                     <div class="product-card-body">
                         <div class="product-card-top">
@@ -740,8 +968,15 @@
                 </div>
 
                 <div class="product-card">
-                    <div class="product-img-wrap">
+                    <div class="img-tabs">
+                        <button class="img-tab active" onclick="switchTab(this,'prod-kpv')">Product</button>
+                        <button class="img-tab" onclick="switchTab(this,'coa-kpv')">COA Photo</button>
+                    </div>
+                    <div class="product-img-wrap img-pane active" id="prod-kpv">
                         <img src="https://ascntlabs.com/wp-content/uploads/2026/03/8F6FA60F-045A-4498-A8C3-562706BD74EB-300x300.png" alt="KPV 10mg">
+                    </div>
+                    <div class="product-img-wrap img-pane" id="coa-kpv">
+                        <img src="" alt="KPV 10mg COA" onerror="this.parentElement.innerHTML='<span style=\'color:var(--gray-400);font-size:0.8125rem\'>COA image coming soon</span>'">
                     </div>
                     <div class="product-card-body">
                         <div class="product-card-top">
@@ -832,148 +1067,194 @@
 
 <script>
     // ── COA DATA ──────────────────────────────────────────────
+    // coaImage: set to a Google Drive direct-view URL for each product
+    // Format: 'https://drive.google.com/uc?export=view&id=YOUR_FILE_ID'
     const COA = {
         retatrutide: {
             name: 'Retatrutide 10mg',
-            lot: 'Lot #RET-2025-A7B3',
+            lot: 'Lot #RET-2026-A7B3',
+            coaImage: null, // TODO: replace with Drive URL for Retatrutide COA image
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch RET-2026-A7B3'],
                 ['HPLC Purity',          '98.7% (C18, gradient 10–60% ACN / 30 min)'],
                 ['Molecular Weight',     '4,758.42 Da (calc.) / 4,758.39 Da (obs. ESI-MS)'],
                 ['Water Content',        '4.2% (Karl Fischer titration)'],
                 ['Peptide Content',      '94.1% (amino acid analysis)'],
-                ['Appearance',          'White to off-white lyophilized powder'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Appearance',           'White to off-white lyophilized powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C in a dry, dark environment. Stable ≥24 months from manufacture date. Reconstitute in BAC water; once reconstituted, store at 2–8 °C and use within 28 days.'
         },
         semaglutide: {
             name: 'Semaglutide 5mg',
-            lot: 'Lot #SEM-2025-B4C1',
+            lot: 'Lot #SEM-2026-B4C1',
+            coaImage: null,
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch SEM-2026-B4C1'],
                 ['HPLC Purity',          '98.3% (C18, gradient 15–55% ACN / 30 min)'],
                 ['Molecular Weight',     '4,113.58 Da (calc.) / 4,113.55 Da (obs. ESI-MS)'],
                 ['Water Content',        '4.5% (Karl Fischer titration)'],
                 ['Peptide Content',      '93.8% (amino acid analysis)'],
-                ['Appearance',          'White lyophilized powder'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Appearance',           'White lyophilized powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated. Stable ≥24 months. After reconstitution store at 2–8 °C; use within 28 days.'
         },
         tesamorelin: {
             name: 'Tesamorelin 10mg',
-            lot: 'Lot #TES-2025-C2F9',
+            lot: 'Lot #TES-2026-C2F9',
+            coaImage: null,
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch TES-2026-C2F9'],
                 ['HPLC Purity',          '99.3% (C18, gradient 5–50% ACN / 25 min)'],
                 ['Molecular Weight',     '5,136.84 Da (calc.) / 5,136.87 Da (obs. MALDI-TOF)'],
-                ['Water Content',        '3.8%'],
-                ['Peptide Content',      '95.7%'],
-                ['Appearance',          'White lyophilized powder'],
+                ['Water Content',        '3.8% (Karl Fischer titration)'],
+                ['Peptide Content',      '95.7% (amino acid analysis)'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Appearance',           'White lyophilized powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated. Stable ≥24 months.'
         },
         cjc1295: {
-            name: 'CJC-1295 / Ipamorelin',
-            lot: 'Lot #CJC-2025-D8K1',
+            name: 'CJC-1295 / Ipamorelin (5mg/5mg)',
+            lot: 'Lot #CJC-2026-D8K1',
+            coaImage: null, // TODO: replace with Drive URL for CJC COA image
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch CJC-2026-D8K1'],
                 ['HPLC Purity',          '97.4% combined (C18, gradient 20–50% ACN / 35 min)'],
-                ['CJC-1295 MW',         '3,647.28 Da (calc.) / 3,647.31 Da (obs.)'],
-                ['Ipamorelin MW',       '2,332.84 Da (calc.) / 2,332.87 Da (obs.)'],
-                ['Water Content',        '5.1%'],
-                ['Peptide Content',      '92.8%'],
+                ['CJC-1295 MW',          '3,647.28 Da (calc.) / 3,647.31 Da (obs. ESI-MS)'],
+                ['Ipamorelin MW',        '2,332.84 Da (calc.) / 2,332.87 Da (obs. ESI-MS)'],
+                ['Water Content',        '5.1% (Karl Fischer titration)'],
+                ['Peptide Content',      '92.8% (amino acid analysis)'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated. Stable ≥24 months from manufacture.'
         },
         hgh: {
             name: 'HGH 5000 IU / 3ml',
-            lot: 'Lot #HGH-2025-G9P2',
+            lot: 'Lot #HGH-2026-G9P2',
+            coaImage: null,
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch HGH-2026-G9P2'],
                 ['HPLC Purity',          '99.2% (C4, gradient 25–45% ACN / 30 min)'],
                 ['Molecular Weight',     '22,124.12 Da (calc.) / 22,124.08 Da (obs. MALDI-TOF)'],
-                ['Biological Activity', '3.2 IU/mg (WHO Reference Standard)'],
-                ['Endotoxin',           '<0.1 EU/mL (LAL test)'],
-                ['Appearance',          'White lyophilized powder'],
+                ['Biological Activity',  '3.2 IU/mg (WHO Reference Standard)'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Appearance',           'White lyophilized powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at 2–8 °C prior to reconstitution. Once reconstituted, use within 21 days. Do not freeze reconstituted solution.'
         },
         bpc157: {
-            name: 'BPC-157 / TB-500',
-            lot: 'Lot #BPC-2025-E5M7',
+            name: 'BPC-157 / TB-500 (10mg/10mg)',
+            lot: 'Lot #BPC-2026-E5M7',
+            coaImage: null, // TODO: replace with Drive URL for BPC-157/TB-500 COA image
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch BPC-2026-E5M7'],
                 ['HPLC Purity',          '95.8% combined (C18, gradient 15–55% ACN / 40 min)'],
-                ['BPC-157 MW',          '1,419.53 Da (calc.) / 1,419.51 Da (obs.)'],
-                ['TB-500 MW',           '4,963.44 Da (calc.) / 4,963.47 Da (obs.)'],
-                ['Water Content',        '6.3%'],
-                ['Peptide Content',      '89.2%'],
+                ['BPC-157 MW',           '1,419.53 Da (calc.) / 1,419.51 Da (obs. ESI-MS)'],
+                ['TB-500 MW',            '4,963.44 Da (calc.) / 4,963.47 Da (obs. ESI-MS)'],
+                ['Water Content',        '6.3% (Karl Fischer titration)'],
+                ['Peptide Content',      '89.2% (amino acid analysis)'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated. Stable ≥24 months.'
         },
         ghk: {
             name: 'GHK-Cu 50mg',
-            lot: 'Lot #GHK-2025-L8M3',
+            lot: 'Lot #GHK-2026-L8M3',
+            coaImage: null,
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch GHK-2026-L8M3'],
                 ['HPLC Purity',          '97.2% (C18, gradient 10–40% ACN / 25 min)'],
                 ['Molecular Weight',     '404.46 Da (calc.) / 404.44 Da (obs. ESI-MS)'],
-                ['Copper Content',      '15.7% (ICP-MS)'],
-                ['Water Content',        '6.8%'],
-                ['Appearance',          'Blue-green powder'],
+                ['Copper Content',       '15.7% (ICP-MS)'],
+                ['Water Content',        '6.8% (Karl Fischer titration)'],
+                ['Appearance',           'Blue-green powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated, protected from light.'
         },
         nad: {
-            name: 'NAD+ 500mg',
-            lot: 'Lot #NAD-2025-F3N8',
+            name: 'NAD+ 1000mg',
+            lot: 'Lot #NAD-2026-F3N8',
+            coaImage: null, // TODO: replace with Drive URL for NAD+ COA image
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch NAD-2026-F3N8'],
                 ['HPLC Purity',          '98.1% (C18, gradient 10–30% ACN / 20 min)'],
                 ['Molecular Weight',     '663.43 Da (calc.) / 663.41 Da (obs. ESI-MS)'],
-                ['Enzymatic Activity',  '≥95% retention vs reference standard'],
-                ['Water Content',        '4.7%'],
-                ['Appearance',          'White to slightly yellow powder'],
+                ['Enzymatic Activity',   '≥95% retention vs reference standard'],
+                ['Water Content',        '4.7% (Karl Fischer titration)'],
+                ['Appearance',           'White to slightly yellow powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated, protected from light and humidity.'
         },
         mots: {
             name: 'MOTS-c 40mg',
-            lot: 'Lot #MOT-2025-J2K6',
+            lot: 'Lot #MOT-2026-J2K6',
+            coaImage: null, // TODO: replace with Drive URL for MOTS-c COA image
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch MOT-2026-J2K6'],
                 ['HPLC Purity',          '98.4% (C18, gradient 15–65% ACN / 35 min)'],
                 ['Molecular Weight',     '1,785.97 Da (calc.) / 1,785.94 Da (obs. ESI-MS)'],
-                ['Water Content',        '5.3%'],
-                ['Peptide Content',      '93.1%'],
-                ['Appearance',          'White lyophilized powder'],
+                ['Water Content',        '5.3% (Karl Fischer titration)'],
+                ['Peptide Content',      '93.1% (amino acid analysis)'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Appearance',           'White lyophilized powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated. Stable ≥24 months.'
         },
         igf1: {
             name: 'IGF-1 LR3 1mg',
-            lot: 'Lot #IGF-2025-K3R7',
+            lot: 'Lot #IGF-2026-K3R7',
+            coaImage: null, // TODO: replace with Drive URL for IGF-1 LR3 COA image
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch IGF-2026-K3R7'],
                 ['HPLC Purity',          '98.2% (C18, gradient 20–60% ACN / 30 min)'],
                 ['Molecular Weight',     '9,117.48 Da (calc.) / 9,117.44 Da (obs. MALDI-TOF)'],
                 ['Water Content',        '4.9% (Karl Fischer titration)'],
                 ['Peptide Content',      '93.5% (amino acid analysis)'],
-                ['Appearance',          'White lyophilized powder'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Appearance',           'White lyophilized powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated. Stable ≥24 months from manufacture. Once reconstituted, store at 2–8 °C; use within 14 days. Avoid repeated freeze-thaw cycles.'
         },
         kpv: {
             name: 'KPV 10mg',
-            lot: 'Lot #KPV-2025-N1Q4',
+            lot: 'Lot #KPV-2026-N1Q4',
+            coaImage: null, // TODO: replace with Drive URL for KPV COA image
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch KPV-2026-N1Q4'],
                 ['HPLC Purity',          '98.6% (C18, gradient 5–35% ACN / 20 min)'],
                 ['Molecular Weight',     '354.43 Da (calc.) / 354.41 Da (obs. ESI-MS)'],
                 ['Water Content',        '5.1% (Karl Fischer titration)'],
                 ['Peptide Content',      '93.9% (amino acid analysis)'],
-                ['Appearance',          'White to off-white lyophilized powder'],
+                ['Endotoxin',            '<0.1 EU/mL (LAL test)'],
+                ['Appearance',           'White to off-white lyophilized powder'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at −20 °C, desiccated, protected from light. Stable ≥24 months. After reconstitution store at 2–8 °C; use within 28 days.'
         },
         bac: {
             name: 'BAC Water 3ml',
-            lot: 'Lot #BAC-2025-H1T4',
+            lot: 'Lot #BAC-2026-H1T4',
+            coaImage: null,
             rows: [
+                ['Manufacturer',         'Ascnt Labs — Internal QC batch BAC-2026-H1T4'],
                 ['Sterility',            'Sterile (USP <71> membrane filtration)'],
-                ['Benzyl Alcohol',      '0.9% w/v (HPLC verified)'],
-                ['Endotoxin',           '<0.5 EU/mL (LAL test)'],
+                ['Benzyl Alcohol',       '0.9% w/v (HPLC verified)'],
+                ['Endotoxin',            '<0.5 EU/mL (LAL test)'],
                 ['pH',                   '6.8 (USP range 4.5–7.0)'],
-                ['Appearance',          'Clear, colorless solution'],
+                ['Appearance',           'Clear, colorless solution'],
+                ['Result',               'PASS — meets Ascnt Labs release criteria'],
             ],
             storage: 'Store at room temperature (15–25 °C), away from direct light. Stable 3 years from manufacture.'
         }
@@ -984,7 +1265,18 @@
         if (!d) return;
         document.getElementById('coa-title').textContent = d.name + ' — Certificate of Analysis';
         document.getElementById('coa-lot').textContent = d.lot;
+
+        const imgHtml = d.coaImage
+            ? `<div class="coa-img-section">
+                   <img src="${d.coaImage}" alt="${d.name} COA Document">
+                   <a class="coa-img-link" href="${d.coaImage}" target="_blank" rel="noopener">
+                       View full COA document ↗
+                   </a>
+               </div>`
+            : '';
+
         document.getElementById('coa-body').innerHTML =
+            imgHtml +
             d.rows.map(r => `
                 <div class="coa-row">
                     <span class="coa-key">${r[0]}</span>
@@ -1074,6 +1366,28 @@
         // On WordPress/WooCommerce this button will link to /checkout
         alert('Redirecting to checkout…\n\nOn the live WooCommerce site this links to /checkout');
     }
+
+    // ── PRODUCT IMAGE TABS ───────────────────────────────────
+    function switchTab(btn, paneId) {
+        const card = btn.closest('.product-card');
+        card.querySelectorAll('.img-tab').forEach(t => t.classList.remove('active'));
+        card.querySelectorAll('.img-pane').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(paneId).classList.add('active');
+    }
+
+    // ── SPLASH SCREEN ────────────────────────────────────────
+    function dismissSplash() {
+        const splash = document.getElementById('splash-screen');
+        splash.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+    (function initSplash() {
+        const splash = document.getElementById('splash-screen');
+        if (!splash) return;
+        document.body.style.overflow = 'hidden';
+        setTimeout(dismissSplash, 3000);
+    })();
 
     // smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
