@@ -409,13 +409,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/A973D19C-772F-4755-86F5-D60B913EC6E7-300x300.png" alt="Retatrutide 10mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1VfqITxtF4YvRs8Iy2RWP-TbxMWDle9E1" alt="Retatrutide 10mg COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -436,13 +436,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/425BF7D2-D442-4A06-AD78-8543AF862CE4-300x300.png" alt="Retatrutide 20mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1n5OQ0yNDiIg2l6-hYyNMryoLFzQMO2My" alt="Retatrutide 20mg COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -463,13 +463,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/22370990-6671-4916-9722-01942E691A66-300x300.png" alt="MOTS-c 40mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1AD-Q9Ipziyjb88AJrMExHtrBC3ZXQyqD" alt="MOTS-c 40mg COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -490,13 +490,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/65B87D04-78AD-4845-A51E-76675DA1A362-300x300.png" alt="NAD+ 1000mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1dyPcyrRqSZb-WXCI-4PFG9N7ohdC9RJg" alt="NAD+ 1000mg COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -528,13 +528,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/84F59392-8469-4397-BEFB-1A0F83288F43-300x300.png" alt="CJC-1295 / Ipamorelin" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1TPtBJDPmbkTVNEZ2_2TcPKMKlIZgXyF4" alt="CJC-1295 / Ipamorelin COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -555,13 +555,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/E76014BA-EABA-4B15-AB50-AF3AB4CEDE96-300x300.png" alt="IGF-1 LR3 1mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1QFTztsUmSpb69TNX-brf_7rmtTgsjXo-" alt="IGF-1 LR3 1mg COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -582,13 +582,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/C82AFE02-5988-4890-AA9E-7F58B10DD69B.png" alt="Tesamorelin 10mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/17EcozhfXTx2c-iA0i9zYolzZXZe4gjTv" alt="Tesamorelin 10mg COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -620,13 +620,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/67340AB4-19EC-4C1C-9A5C-38E5CF64516A-300x300.png" alt="BPC-157 / TB-500" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1f4vfIkdDObe0vdtgp08hh-s-ZSV1HV4g" alt="BPC-157 / TB-500 COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -647,13 +647,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/8F6FA60F-045A-4498-A8C3-562706BD74EB-300x300.png" alt="KPV 10mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1Xcftk9Tj_iq5_8AzX1FrLN9BvNI4XuOh" alt="KPV 10mg COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -674,13 +674,13 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
                 <div style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;background:#fff;display:flex;flex-direction:column;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.08)';this.style.borderColor='#9CA3AF'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#E5E7EB'">
                     <div style="background:#fff;border-bottom:1px solid #E5E7EB;height:180px;position:relative;overflow:hidden;">
                         <div style="position:absolute;top:0.5rem;left:0.5rem;display:flex;gap:3px;z-index:2;">
-                            <button onclick="ascntTab(this,0)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
-                            <button onclick="ascntTab(this,1)" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
+                            <button onclick="ascntTab(this,'photo')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:#111827;color:#fff;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">Photo</button>
+                            <button onclick="ascntTab(this,'coa')" style="font-size:0.6rem;font-weight:600;letter-spacing:0.04em;padding:0.18rem 0.55rem;border-radius:20px;border:none;cursor:pointer;background:rgba(0,0,0,0.07);color:#6B7280;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;">COA</button>
                         </div>
-                        <div data-p="0" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
+                        <div class="ascnt-photo" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:1.25rem;box-sizing:border-box;">
                             <img src="https://ascntlabs.com/wp-content/uploads/2026/03/FFE04420-7FAC-4442-91EA-BEF6F4CE1C8E.png" alt="GHK-Cu 100mg" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;">
                         </div>
-                        <div data-p="1" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
+                        <div class="ascnt-coa" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;padding:0.75rem;box-sizing:border-box;background:#F9FAFB;">
                             <img src="https://lh3.googleusercontent.com/d/1aR-HYucVByQnebTOmMa8BVTI8SvMqcc9" alt="GHK-Cu 100mg COA" onclick="ascntLbOpen(this.src)" style="cursor:zoom-in;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none;font-size:0.75rem;color:#9CA3AF;font-family:monospace;">COA not available</span>
                         </div>
                     </div>
@@ -732,15 +732,19 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
     </div>
 
 <script>
-function ascntTab(btn, idx) {
+function ascntTab(btn, which) {
     var wrap = btn.parentElement.parentElement;
-    wrap.querySelectorAll('[data-p]').forEach(function(el) {
-        el.style.display = el.getAttribute('data-p') == idx ? 'flex' : 'none';
-    });
-    btn.parentElement.querySelectorAll('button').forEach(function(b, i) {
-        b.style.background = i === idx ? '#111827' : 'rgba(0,0,0,0.07)';
-        b.style.color = i === idx ? '#fff' : '#6B7280';
-    });
+    var photo = wrap.getElementsByClassName('ascnt-photo')[0];
+    var coa   = wrap.getElementsByClassName('ascnt-coa')[0];
+    if (photo) photo.style.display = which === 'photo' ? 'flex' : 'none';
+    if (coa)   coa.style.display   = which === 'coa'   ? 'flex' : 'none';
+    var btns = btn.parentElement.getElementsByTagName('button');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].style.background = 'rgba(0,0,0,0.07)';
+        btns[i].style.color = '#6B7280';
+    }
+    btn.style.background = '#111827';
+    btn.style.color = '#fff';
 }
 function ascntLbOpen(src) {
     var lb = document.getElementById('ascnt-coa-lb');
