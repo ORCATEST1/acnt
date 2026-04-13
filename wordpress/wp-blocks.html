@@ -731,15 +731,6 @@ function ascntRenderCOA(key) { var d=ASCNT_COA[key]; if(!d) return; document.get
 
     </div>
 
-<!-- COA Lightbox -->
-<div id="ascnt-coa-lb" onclick="if(event.target===this)ascntLbClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9998;align-items:center;justify-content:center;padding:2rem;box-sizing:border-box;">
-    <div style="position:relative;max-width:min(860px,90vw);">
-        <button onclick="ascntLbClose()" style="position:absolute;top:-2.25rem;right:0;background:none;border:none;color:rgba(255,255,255,0.7);font-size:1.375rem;cursor:pointer;line-height:1;padding:0.25rem;" title="Close">&#x2715;</button>
-        <img id="ascnt-coa-lb-img" src="" style="width:100%;max-height:88vh;object-fit:contain;display:block;border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,0.6);">
-        <p style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.3);margin:0.75rem 0 0;letter-spacing:0.05em;text-transform:uppercase;">Certificate of Analysis · Freedom Diagnostics · Click outside to close</p>
-    </div>
-</div>
-
 <script>
 function ascntTab(btn, idx) {
     var wrap = btn.parentElement.parentElement;
@@ -752,13 +743,26 @@ function ascntTab(btn, idx) {
     });
 }
 function ascntLbOpen(src) {
-    document.getElementById('ascnt-coa-lb-img').src = src;
     var lb = document.getElementById('ascnt-coa-lb');
+    if (!lb) {
+        lb = document.createElement('div');
+        lb.id = 'ascnt-coa-lb';
+        lb.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:99999;display:flex;align-items:center;justify-content:center;padding:2rem;box-sizing:border-box;cursor:default;';
+        lb.innerHTML = '<div style="position:relative;max-width:min(860px,90vw);">'
+            + '<button onclick="ascntLbClose()" style="position:absolute;top:-2.25rem;right:0;background:none;border:none;color:rgba(255,255,255,0.7);font-size:1.375rem;cursor:pointer;line-height:1;padding:0.25rem;" title="Close">&#x2715;</button>'
+            + '<img id="ascnt-coa-lb-img" src="" style="width:100%;max-height:88vh;object-fit:contain;display:block;border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,0.6);">'
+            + '<p style="text-align:center;font-family:monospace;font-size:0.7rem;color:rgba(255,255,255,0.3);margin:0.75rem 0 0;letter-spacing:0.05em;text-transform:uppercase;">Certificate of Analysis &middot; Freedom Diagnostics &middot; Click outside to close</p>'
+            + '</div>';
+        lb.addEventListener('click', function(e){ if(e.target===lb) ascntLbClose(); });
+        document.body.appendChild(lb);
+    }
+    document.getElementById('ascnt-coa-lb-img').src = src;
     lb.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 }
 function ascntLbClose() {
-    document.getElementById('ascnt-coa-lb').style.display = 'none';
+    var lb = document.getElementById('ascnt-coa-lb');
+    if (lb) lb.style.display = 'none';
     document.body.style.overflow = '';
 }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') ascntLbClose(); });
@@ -832,6 +836,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') ascntLbCl
      Click anywhere to skip.
      ============================================================ -->
 
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
 <style>
 #ascnt-splash{position:fixed;inset:0;background:#06090f;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),visibility 0.7s cubic-bezier(0.4,0,0.2,1);}
 #ascnt-splash.hidden{opacity:0;visibility:hidden;pointer-events:none;}
@@ -841,7 +846,7 @@ document.addEventListener('keydown', function(e){ if(e.key==='Escape') ascntLbCl
 #ascnt-splash-rings::after{width:900px;height:900px;animation-delay:0.5s;}
 @keyframes ascntRings{from{opacity:0;transform:translate(-50%,-50%) scale(0.6);}40%{opacity:1;}to{opacity:0.3;transform:translate(-50%,-50%) scale(1);}}
 #ascnt-splash-content{position:relative;text-align:center;user-select:none;}
-#ascnt-splash-word{font-family:'Inter',sans-serif;font-size:clamp(5rem,15vw,10rem);font-weight:700;letter-spacing:-0.05em;line-height:1;color:#fff;opacity:0;transform:translateY(28px) scale(0.96);animation:ascntWordIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;}
+#ascnt-splash-word{font-family:'Pirata One',cursive;font-size:clamp(5rem,15vw,11rem);font-weight:400;letter-spacing:0.02em;line-height:1;color:#fff;opacity:0;transform:translateY(28px) scale(0.96);animation:ascntWordIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s forwards;}
 #ascnt-splash-word .dot{color:#2563EB;}
 #ascnt-splash-divider{width:40px;height:1px;background:rgba(37,99,235,0.5);margin:1.5rem auto 0;opacity:0;animation:ascntWordIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;}
 #ascnt-splash-sub{font-family:'IBM Plex Mono',monospace;font-size:clamp(0.6rem,1.5vw,0.8125rem);font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:1.25rem;opacity:0;animation:ascntWordIn 0.9s cubic-bezier(0.16,1,0.3,1) 0.45s forwards;}
